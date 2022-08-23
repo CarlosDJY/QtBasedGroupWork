@@ -4,6 +4,7 @@
 #include <QLocale>
 #include <QTranslator>
 
+//这是一段注释 用来检测是否被更改了
 
 int main(int argc, char *argv[])
 {
