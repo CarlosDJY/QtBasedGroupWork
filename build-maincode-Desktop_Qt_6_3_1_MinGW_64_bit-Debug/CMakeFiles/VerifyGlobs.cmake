@@ -43,6 +43,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/DataFiles/C++/GW_testClone
 set(OLD_GLOB
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountcontrol.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountdetail.cpp"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/balance.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/main.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.cpp"
@@ -69,6 +70,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/DataFiles/C++/GW_testClone
 set(OLD_GLOB
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountcontrol.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountdetail.h"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/balance.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.h"
@@ -175,6 +177,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/DataFiles/C++/GW_testClone
 set(OLD_GLOB
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountcontrol.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountdetail.ui"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/balance.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.ui"

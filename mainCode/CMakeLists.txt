@@ -51,6 +51,10 @@ set(PROJECT_SOURCES
         preference.cpp
         preference.ui
 
+        balance.h
+        balance.cpp
+        balance.ui
+
         ${TS_FILES}
 )
 

@@ -1,6 +1,7 @@
 #include "accountcontrol.h"
 #include "mainwindow.h"
 #include "accountdetail.h"
+#include "balance.h"
 #include "preference.h"
 #include "ui_accountcontrol.h"
 
@@ -36,6 +37,14 @@ void AccountControl::on_AccountButton_clicked()
 void AccountControl::on_PreferenceButton_clicked()
 {
     Preference *win = new Preference;
+    win->show();
+    this->close();
+}
+
+
+void AccountControl::on_BalanceButton_clicked()
+{
+    Balance *win = new Balance;
     win->show();
     this->close();
 }

@@ -22,6 +22,8 @@ private slots:
 
     void on_PreferenceButton_clicked();
 
+    void on_BalanceButton_clicked();
+
 private:
     Ui::AccountControl *ui;
 };
