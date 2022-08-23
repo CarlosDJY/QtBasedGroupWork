@@ -1,4 +1,5 @@
 #include "mainwindow2.h"
+#include "accountcontrol.h"
 #include "accountdetail.h"
 #include "ui_mainwindow2.h"
 
@@ -22,7 +23,7 @@ MainWindow2::~MainWindow2()
 
 void MainWindow2::on_AccountButton_clicked()
 {
-    AccountDetail *win = new AccountDetail;
+    AccountControl *win = new AccountControl;
     win->show();
     this->close();
 }

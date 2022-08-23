@@ -8,7 +8,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -17,7 +17,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -26,7 +26,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -35,14 +35,14 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/*.cpp")
 set(OLD_GLOB
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountcontrol.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountdetail.cpp"
-  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountmanager.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/main.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.cpp"
@@ -51,7 +51,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -60,14 +60,14 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/*.h")
 set(OLD_GLOB
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountcontrol.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountdetail.h"
-  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountmanager.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.h"
@@ -75,7 +75,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -84,7 +84,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -93,7 +93,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -102,7 +102,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -111,7 +111,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -120,7 +120,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -129,7 +129,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -138,7 +138,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -147,7 +147,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -156,7 +156,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
@@ -165,14 +165,14 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # _directory_contents at D:/QT/6.3.1/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/*.ui")
 set(OLD_GLOB
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountcontrol.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountdetail.ui"
-  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/accountmanager.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.ui"
@@ -180,5 +180,5 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs")
 endif()

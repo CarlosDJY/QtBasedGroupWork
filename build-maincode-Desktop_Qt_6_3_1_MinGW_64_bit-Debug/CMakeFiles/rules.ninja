@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = D:\QT\Tools\CMake_64\bin\cmake.exe --regenerate-during-build -SD:\DataFiles\C++\GW_testClone\QtBasedGroupWork\mainCode -BD:\DataFiles\C++\GW_testClone\QtBasedGroupWork\build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug
+  command = D:\QT\Tools\CMake_64\bin\cmake.exe --regenerate-during-build -SD:\DataFiles\C++\GW_testClone\QtBasedGroupWork\mainCode -BD:\DataFiles\C++\GW_testClone\QtBasedGroupWork\build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug
   description = Re-running CMake...
   generator = 1
 
@@ -51,7 +51,7 @@ rule RERUN_CMAKE
 # Rule for re-checking globbed directories.
 
 rule VERIFY_GLOBS
-  command = D:\QT\Tools\CMake_64\bin\cmake.exe -P D:\DataFiles\C++\GW_testClone\QtBasedGroupWork\build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\CMakeFiles\VerifyGlobs.cmake
+  command = D:\QT\Tools\CMake_64\bin\cmake.exe -P D:\DataFiles\C++\GW_testClone\QtBasedGroupWork\build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug\CMakeFiles\VerifyGlobs.cmake
   description = Re-checking globbed directories...
   generator = 1
 

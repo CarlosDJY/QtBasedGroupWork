@@ -19,6 +19,7 @@ public:
 
 private slots:
     void on_BackButton_clicked();
+
     void on_ConfirmButton_clicked();
 
     void on_AccountLineEdit_editingFinished();

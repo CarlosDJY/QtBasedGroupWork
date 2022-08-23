@@ -1,5 +1,6 @@
 #include "mainwindow2.h"
 #include "accountdetail.h"
+#include "accountcontrol.h"
 #include "ui_accountdetail.h"
 #include <stdio.h>
 #include <QLineEdit>
@@ -47,7 +48,7 @@ void AccountDetail::on_ReturnButton_clicked()
         QMessageBox::warning(this, tr("Warning"), tr("Changes not Saved !"), QMessageBox::Yes);
     }
     else{
-        MainWindow2 *win = new MainWindow2;
+        AccountControl *win = new AccountControl;
         win->show();
         this->close();
     }
@@ -82,7 +83,7 @@ void AccountDetail::on_SaveButton_clicked()
 
         DetailReady = 1;
         editCount = 0;
-        MainWindow2 *win = new MainWindow2;
+        AccountControl *win = new AccountControl;
         win->show();
         this->close();
     }
@@ -94,7 +95,7 @@ void AccountDetail::on_SaveButton_clicked()
         Account.close();
 
         editCount = 0;
-        MainWindow2 *win = new MainWindow2;
+        AccountControl *win = new AccountControl;
         win->show();
         this->close();
     }

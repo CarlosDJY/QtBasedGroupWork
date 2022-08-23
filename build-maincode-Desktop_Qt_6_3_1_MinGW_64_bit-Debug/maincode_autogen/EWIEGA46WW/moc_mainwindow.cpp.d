@@ -1,5 +1,5 @@
-D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/maincode_autogen/EWIEGA46WW/moc_mainwindow.cpp: D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.h \
-  D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/maincode_autogen/moc_predefs.h \
+D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/mainCode_autogen/EWIEGA46WW/moc_mainwindow.cpp: D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.h \
+  D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-mainCode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/mainCode_autogen/moc_predefs.h \
   D:/QT/6.3.1/mingw_64/include/QtCore/QProcess \
   D:/QT/6.3.1/mingw_64/include/QtCore/qalgorithms.h \
   D:/QT/6.3.1/mingw_64/include/QtCore/qanystringview.h \

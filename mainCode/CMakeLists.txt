@@ -43,9 +43,10 @@ set(PROJECT_SOURCES
         accountdetail.cpp
         accountdetail.ui
 
-        accountmanager.h
-        accountmanager.cpp
-        accountmanager.ui
+        accountcontrol.h
+        accountcontrol.cpp
+        accountcontrol.ui
+
         ${TS_FILES}
 )
 
