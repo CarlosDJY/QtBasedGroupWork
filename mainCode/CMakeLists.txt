@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(GroupWork_qt VERSION 0.1 LANGUAGES CXX)
+project(mainCode VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -14,13 +14,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
-set(TS_FILES GroupWork_qt_zh_CN.ts)
+set(TS_FILES mainCode_zh_CN.ts)
 
 set(PROJECT_SOURCES
         main.cpp
-
-        mainwindow.h
         mainwindow.cpp
+        mainwindow.h
+        mainwindow.ui
+
+        main.cpp
+        mainwindow.cpp
+        mainwindow.h
         mainwindow.ui
 
         login.h
@@ -39,29 +43,32 @@ set(PROJECT_SOURCES
         accountdetail.cpp
         accountdetail.ui
 
+        accountmanager.h
+        accountmanager.cpp
+        accountmanager.ui
         ${TS_FILES}
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(GroupWork_qt
+    qt_add_executable(mainCode
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
 # Define target properties for Android with Qt 6 as:
-#    set_property(TARGET GroupWork_qt APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+#    set_property(TARGET mainCode APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 
     qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 else()
     if(ANDROID)
-        add_library(GroupWork_qt SHARED
+        add_library(mainCode SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(GroupWork_qt
+        add_executable(mainCode
             ${PROJECT_SOURCES}
         )
     endif()
@@ -69,9 +76,9 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(GroupWork_qt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(mainCode PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-set_target_properties(GroupWork_qt PROPERTIES
+set_target_properties(mainCode PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -79,10 +86,10 @@ set_target_properties(GroupWork_qt PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-install(TARGETS GroupWork_qt
+install(TARGETS mainCode
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(GroupWork_qt)
+    qt_finalize_executable(mainCode)
 endif()

@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-445c2877b5237d563fed.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "mainCode",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "mainCode::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mainCode-Debug-a9c85c5cef815c5ebefb.json",
+					"name" : "mainCode",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mainCode_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mainCode_autogen-Debug-262d86f945d15f0e2b2d.json",
+					"name" : "mainCode_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mainCode_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mainCode_autogen_timestamp_deps-Debug-3127e9f671e3327062e9.json",
+					"name" : "mainCode_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+		"source" : "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

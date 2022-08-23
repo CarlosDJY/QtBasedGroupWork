@@ -1,0 +1,27 @@
+# ninja log v5
+0	17	0	D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	4cba830941e2b423
+0	708	6829557279847280	maincode_autogen/timestamp	98b27cbd6f14ff89
+0	708	6829557279847280	maincode_autogen/mocs_compilation.cpp	98b27cbd6f14ff89
+0	708	6829557279847280	D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/maincode_autogen/timestamp	98b27cbd6f14ff89
+0	708	6829557279847280	D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/maincode_autogen/mocs_compilation.cpp	98b27cbd6f14ff89
+9	1671	6829557337604559	CMakeFiles/maincode.dir/main.cpp.obj	5545a99701548f4d
+5	1309	6829557587664131	CMakeFiles/maincode.dir/maincode_autogen/mocs_compilation.cpp.obj	c1289eee609b0a7b
+16	1592	6829557336824554	CMakeFiles/maincode.dir/accountmanager.cpp.obj	957722b60d01dd6b
+11	1862	6829557339514609	CMakeFiles/maincode.dir/register.cpp.obj	cbf5f59b97ed536f
+20	1733	6829557338224564	CMakeFiles/maincode.dir/mainwindow2.cpp.obj	dde2c94729ac9a6
+13	1788	6829557338774571	CMakeFiles/maincode.dir/mainwindow.cpp.obj	cc20f9b462dfc0fc
+14	1881	6829557339714593	CMakeFiles/maincode.dir/login.cpp.obj	4b72c8dc683191a2
+18	2063	6829557341524596	CMakeFiles/maincode.dir/accountdetail.cpp.obj	d5365e8b28cf4bca
+1309	1555	6829557590088078	maincode.exe	55f0c0e22fcd36f
+1	22	0	D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	4cba830941e2b423
+13	20	0	D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/maincode_autogen/mocs_compilation.cpp	9ceccd2007ddaec7
+1	1679	6829559101613786	CMakeFiles/mainCode.dir/main.cpp.obj	e54a7a2a38d0cae2
+9	1707	6829559101893826	CMakeFiles/mainCode.dir/accountmanager.cpp.obj	e9c040ce9307f3e2
+7	1716	6829559101983780	CMakeFiles/mainCode.dir/mainwindow2.cpp.obj	2e228b7c0df53504
+4	1782	6829559102639319	CMakeFiles/mainCode.dir/mainwindow.cpp.obj	97765c50dad2f374
+11	2057	6829559105389315	CMakeFiles/mainCode.dir/accountdetail.cpp.obj	bed96250d3eb15ac
+0	17	0	D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/build-maincode-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	4cba830941e2b423
+3	1456	6829559143358019	CMakeFiles/mainCode.dir/maincode_autogen/mocs_compilation.cpp.obj	69b7bcd9f4196e6d
+6	1553	6829559144328060	CMakeFiles/mainCode.dir/login.cpp.obj	ff18d14fc52ea1c6
+5	1592	6829559144708007	CMakeFiles/mainCode.dir/register.cpp.obj	4c10c3274b100c4
+1592	1836	6829559147118397	mainCode.exe	ca125a6f744f8d77
