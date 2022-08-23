@@ -47,6 +47,10 @@ set(PROJECT_SOURCES
         accountcontrol.cpp
         accountcontrol.ui
 
+        preference.h
+        preference.cpp
+        preference.ui
+
         ${TS_FILES}
 )
 

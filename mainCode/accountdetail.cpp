@@ -1,4 +1,3 @@
-#include "mainwindow2.h"
 #include "accountdetail.h"
 #include "accountcontrol.h"
 #include "ui_accountdetail.h"

@@ -20,6 +20,8 @@ private slots:
 
     void on_AccountButton_clicked();
 
+    void on_PreferenceButton_clicked();
+
 private:
     Ui::AccountControl *ui;
 };

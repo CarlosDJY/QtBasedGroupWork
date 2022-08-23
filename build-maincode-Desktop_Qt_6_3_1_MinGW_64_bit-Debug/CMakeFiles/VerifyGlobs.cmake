@@ -47,6 +47,7 @@ set(OLD_GLOB
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/main.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.cpp"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/preference.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/register.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
@@ -71,6 +72,7 @@ set(OLD_GLOB
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.h"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/preference.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/register.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
@@ -176,6 +178,7 @@ set(OLD_GLOB
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.ui"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/preference.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/register.ui"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

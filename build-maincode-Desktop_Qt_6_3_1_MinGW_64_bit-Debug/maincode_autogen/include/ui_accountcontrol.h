@@ -27,8 +27,8 @@ public:
     QWidget *widget;
     QGridLayout *gridLayout;
     QPushButton *AccountButton;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *BalanceButton;
+    QPushButton *PreferenceButton;
     QPushButton *LogOutButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -53,19 +53,19 @@ public:
 
         gridLayout->addWidget(AccountButton, 0, 0, 1, 1);
 
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setMinimumSize(QSize(150, 60));
-        pushButton->setMaximumSize(QSize(150, 60));
+        BalanceButton = new QPushButton(widget);
+        BalanceButton->setObjectName(QString::fromUtf8("BalanceButton"));
+        BalanceButton->setMinimumSize(QSize(150, 60));
+        BalanceButton->setMaximumSize(QSize(150, 60));
 
-        gridLayout->addWidget(pushButton, 0, 1, 1, 1);
+        gridLayout->addWidget(BalanceButton, 0, 1, 1, 1);
 
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setMinimumSize(QSize(150, 60));
-        pushButton_2->setMaximumSize(QSize(150, 60));
+        PreferenceButton = new QPushButton(widget);
+        PreferenceButton->setObjectName(QString::fromUtf8("PreferenceButton"));
+        PreferenceButton->setMinimumSize(QSize(150, 60));
+        PreferenceButton->setMaximumSize(QSize(150, 60));
 
-        gridLayout->addWidget(pushButton_2, 1, 0, 1, 1);
+        gridLayout->addWidget(PreferenceButton, 1, 0, 1, 1);
 
         LogOutButton = new QPushButton(widget);
         LogOutButton->setObjectName(QString::fromUtf8("LogOutButton"));
@@ -92,8 +92,8 @@ public:
     {
         AccountControl->setWindowTitle(QCoreApplication::translate("AccountControl", "MainWindow", nullptr));
         AccountButton->setText(QCoreApplication::translate("AccountControl", "\344\270\252\344\272\272\344\277\241\346\201\257", nullptr));
-        pushButton->setText(QCoreApplication::translate("AccountControl", "\344\275\231\351\242\235\346\237\245\350\257\242", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("AccountControl", "\345\201\217\345\245\275\350\256\276\347\275\256", nullptr));
+        BalanceButton->setText(QCoreApplication::translate("AccountControl", "\344\275\231\351\242\235\346\237\245\350\257\242", nullptr));
+        PreferenceButton->setText(QCoreApplication::translate("AccountControl", "\345\201\217\345\245\275\350\256\276\347\275\256", nullptr));
         LogOutButton->setText(QCoreApplication::translate("AccountControl", "\347\231\273\345\207\272", nullptr));
     } // retranslateUi
 
