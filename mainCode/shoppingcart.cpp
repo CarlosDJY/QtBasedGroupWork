@@ -32,3 +32,11 @@ void ShoppingCart::on_BuyAll_clicked()
     this->close();
 }
 
+
+void ShoppingCart::on_BuyChosen_clicked()
+{
+    PayPage *win = new PayPage;
+    win->show();
+    this->close();
+}
+

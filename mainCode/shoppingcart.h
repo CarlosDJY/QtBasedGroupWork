@@ -23,6 +23,8 @@ private slots:
 
     void on_BuyAll_clicked();
 
+    void on_BuyChosen_clicked();
+
 private:
     Ui::ShoppingCart *ui;
 };
