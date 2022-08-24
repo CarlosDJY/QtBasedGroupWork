@@ -5,6 +5,8 @@
 #include <QLineEdit>
 #include <QFile>
 #include <QFileInfo>
+#include <QMainWindow>
+#include <QFileDialog>
 #include <QMessageBox>
 
 using namespace std;
@@ -12,7 +14,8 @@ using namespace std;
 int DetailReady = 0;
 int NeedEdit = 5;
 
-QFile Account("account.txt");
+QFile Account;
+QString AccountFile = "./AccountFile.txt";
 
 int editCount = 0;
 int Sex = 0;
@@ -60,7 +63,7 @@ void AccountDetail::on_ReturnButton_clicked()
 
 void AccountDetail::on_SaveButton_clicked()
 {
-    //update all data
+    //update all data "Account.txt",
 
     if(NeedEdit != 0){
         Account.open(QIODeviceBase::ReadWrite);
