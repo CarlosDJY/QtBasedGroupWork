@@ -14,8 +14,9 @@ using namespace std;
 int DetailReady = 0;
 int NeedEdit = 5;
 
-QFile Account;
-QString AccountFile = "./AccountFile.txt";
+QFile Account("Users.txt");
+
+QString Arr;
 
 int editCount = 0;
 int Sex = 0;
@@ -31,6 +32,12 @@ AccountDetail::AccountDetail(QWidget *parent) :
     ui->IDEdit->setReadOnly(true);
     ui->PasswordEdit->setMaxLength(10);
     ui->PhoneEdit->setMaxLength(13);
+
+    Account.open(QIODevice::ReadOnly);
+    Arr=(QString)Account.readAll();
+    QStringList P = Arr.split("\n");
+    qDebug() << Arr;
+    qDebug() << P;
 }
 
 AccountDetail::~AccountDetail()
@@ -45,13 +52,13 @@ bool isDetailReady(){
 void AccountDetail::on_ReturnButton_clicked()
 {
     if(NeedEdit > 0){
-        QMessageBox::warning(this, tr("Warning"), tr("Edit not Complete !"), QMessageBox::Yes);
+        QMessageBox::warning(this, tr("Warning"), tr("Edit not Complete !"), QMessageBox::Ok);
     }
     else if(DetailReady == 0){
-        QMessageBox::warning(this, tr("Warning"), tr("Save Edit First !"), QMessageBox::Yes);
+        QMessageBox::warning(this, tr("Warning"), tr("Save Edit First !"), QMessageBox::Ok);
     }
     else if(editCount != 0){
-        QMessageBox::warning(this, tr("Warning"), tr("Changes not Saved !"), QMessageBox::Yes);
+        QMessageBox::warning(this, tr("Warning"), tr("Changes not Saved !"), QMessageBox::Ok);
     }
     else{
         AccountControl *win = new AccountControl;
@@ -71,7 +78,7 @@ void AccountDetail::on_SaveButton_clicked()
         str = QString::fromStdString("ERROR\n").toUtf8();
         Account.write(str);
         Account.close();
-        QMessageBox::warning(this, tr("Warning"), tr("Edit not Complete !"), QMessageBox::Yes);
+        QMessageBox::warning(this, tr("Warning"), tr("Edit not Complete !"), QMessageBox::Ok);
 
     }
     else if(DetailReady == 0){

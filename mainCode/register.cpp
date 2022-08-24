@@ -45,6 +45,27 @@ void Register::on_BackButton_clicked()
     this->close();
 }
 
+QFile FileReg("Users.txt");
+
+int isReusedAccount(QString Q){
+    if(!FileReg.isOpen()){
+        FileReg.open(QIODevice::ReadOnly);
+    }
+    QString Arr;
+    while(!FileReg.atEnd())
+       {
+         Arr=(QString)FileReg.readLine();
+         QStringList P=Arr.split(' ');
+         if(QString::compare(P[0],Q)==0)
+            {
+                    FileReg.close();
+                    return true;
+            }
+       }
+    FileReg.close();
+    return false;
+}
+
 //待补充：判断字符串是否符合要求
 int isValidID(QString Q)
 {
@@ -53,7 +74,7 @@ int isValidID(QString Q)
         return 0;
     }
     int i=0;
-    std::string STR=Q.toStdString();
+    string STR=Q.toStdString();
     const char* arr=STR.c_str();
     while (i<10)
     {
@@ -71,6 +92,7 @@ int isValidID(QString Q)
 
 void Register::on_ConfirmButton_clicked()
 {
+    if(!isReusedAccount(ui->AccountLineEdit->text())){
         if (isValidID(ui->AccountLineEdit->text())){
             if (isValidID(ui->PasswordLineEdit->text())){
                 if(ui->AdminPasswordLineEdit->text()==AdminPw){
@@ -86,14 +108,18 @@ void Register::on_ConfirmButton_clicked()
                         WriteToFile(ui->AccountLineEdit->text(),ui->PasswordLineEdit->text());
                     }
                 else {
-                    QMessageBox::warning(this, tr("Warning"), tr("Admin Password error !"), QMessageBox::Yes);
+                    QMessageBox::warning(this, tr("Warning"), tr("Admin Password error !"), QMessageBox::Ok);
                 }
             }
             else{
-                QMessageBox::warning(this, tr("Warning"), tr("Invalid Password !"), QMessageBox::Yes);
+                QMessageBox::warning(this, tr("Warning"), tr("Invalid Password !"), QMessageBox::Ok);
             }
         }
         else{
-            QMessageBox::warning(this, tr("Warning"), tr("Invalid User name !"), QMessageBox::Yes);
+            QMessageBox::warning(this, tr("Warning"), tr("Invalid User name !"), QMessageBox::Ok);
         }
+    }
+    else{
+        QMessageBox::warning(this, tr("Warning"), tr("The User Name has been Registered !"), QMessageBox::Ok);
+    }
 }
