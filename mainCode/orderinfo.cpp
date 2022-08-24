@@ -10,6 +10,7 @@ OrderInfo::OrderInfo(QWidget *parent) :
     ui(new Ui::OrderInfo)
 {
     ui->setupUi(this);
+    this->setWindowTitle("网上超市系统");
 
     //订单编号、购物日期、所购商品（编号、名称、数量、单价）、购物总价格等
     QStandardItemModel* model = new QStandardItemModel();

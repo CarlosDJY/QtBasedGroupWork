@@ -7,6 +7,7 @@ ProductSearch::ProductSearch(QWidget *parent) :
     ui(new Ui::ProductSearch)
 {
     ui->setupUi(this);
+    this->setWindowTitle("网上超市系统");
 }
 
 ProductSearch::~ProductSearch()
