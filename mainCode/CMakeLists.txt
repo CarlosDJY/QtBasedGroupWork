@@ -55,6 +55,26 @@ set(PROJECT_SOURCES
         balance.cpp
         balance.ui
 
+        orderinfo.h
+        orderinfo.cpp
+        orderinfo.ui
+
+        productsearch.h
+        productsearch.cpp
+        productsearch.ui
+
+        shoppingcart.h
+        shoppingcart.cpp
+        shoppingcart.ui
+
+        paypage.h
+        paypage.cpp
+        paypage.ui
+
+        productinfo.h
+        productinfo.cpp
+        productinfo.ui
+
         ${TS_FILES}
 )
 
