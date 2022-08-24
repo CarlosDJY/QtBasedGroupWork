@@ -48,8 +48,13 @@ set(OLD_GLOB
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/main.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.cpp"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/orderinfo.cpp"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/paypage.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/preference.cpp"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/productinfo.cpp"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/productsearch.cpp"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/register.cpp"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/shoppingcart.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -74,8 +79,13 @@ set(OLD_GLOB
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.h"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/orderinfo.h"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/paypage.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/preference.h"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/productinfo.h"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/productsearch.h"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/register.h"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/shoppingcart.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -181,8 +191,13 @@ set(OLD_GLOB
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/login.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/mainwindow2.ui"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/orderinfo.ui"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/paypage.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/preference.ui"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/productinfo.ui"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/productsearch.ui"
   "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/register.ui"
+  "D:/DataFiles/C++/GW_testClone/QtBasedGroupWork/mainCode/shoppingcart.ui"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

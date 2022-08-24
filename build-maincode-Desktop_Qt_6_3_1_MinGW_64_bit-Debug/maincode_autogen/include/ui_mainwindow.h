@@ -11,12 +11,15 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,11 +28,20 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
+    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout_2;
+    QSpacerItem *verticalSpacer_2;
+    QSpacerItem *horizontalSpacer_3;
+    QGridLayout *gridLayout;
+    QSpacerItem *horizontalSpacer;
     QLabel *label;
-    QWidget *horizontalLayoutWidget;
+    QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
     QPushButton *RegisterButton;
     QPushButton *LoginButton;
+    QSpacerItem *horizontalSpacer_4;
+    QSpacerItem *verticalSpacer_3;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -40,9 +52,26 @@ public:
         MainWindow->resize(800, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        verticalLayout = new QVBoxLayout(centralwidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_2->addItem(verticalSpacer_2, 0, 1, 1, 1);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_3, 1, 0, 1, 1);
+
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 0, 0, 1, 1);
+
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(0, 120, 801, 71));
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -55,15 +84,22 @@ public:
         label->setTextFormat(Qt::AutoText);
         label->setAlignment(Qt::AlignCenter);
         label->setWordWrap(false);
-        horizontalLayoutWidget = new QWidget(centralwidget);
-        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(0, 390, 801, 121));
-        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+
+        gridLayout->addWidget(label, 0, 1, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 0, 2, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 200, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer, 1, 1, 1, 1);
+
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(30);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        RegisterButton = new QPushButton(horizontalLayoutWidget);
+        RegisterButton = new QPushButton(centralwidget);
         RegisterButton->setObjectName(QString::fromUtf8("RegisterButton"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
@@ -83,7 +119,7 @@ public:
 
         horizontalLayout->addWidget(RegisterButton);
 
-        LoginButton = new QPushButton(horizontalLayoutWidget);
+        LoginButton = new QPushButton(centralwidget);
         LoginButton->setObjectName(QString::fromUtf8("LoginButton"));
         sizePolicy1.setHeightForWidth(LoginButton->sizePolicy().hasHeightForWidth());
         LoginButton->setSizePolicy(sizePolicy1);
@@ -95,6 +131,23 @@ public:
         LoginButton->setAutoDefault(true);
 
         horizontalLayout->addWidget(LoginButton);
+
+
+        gridLayout->addLayout(horizontalLayout, 2, 0, 1, 3);
+
+
+        gridLayout_2->addLayout(gridLayout, 1, 1, 1, 1);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_4, 1, 2, 1, 1);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_2->addItem(verticalSpacer_3, 2, 1, 1, 1);
+
+
+        verticalLayout->addLayout(gridLayout_2);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);

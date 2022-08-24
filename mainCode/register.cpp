@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "register.h"
 #include "ui_register.h"
+#include <QDebug>
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QFile>
@@ -15,6 +16,7 @@ void WriteToFile(QString UserName,QString Password)
     QString Arr=UserName+' '+Password+'\n';
     std::string s=Arr.toStdString();
     const char* res=s.c_str();
+    qDebug() << Arr;
     Q.write(res);
     Q.close();
 }
@@ -81,6 +83,7 @@ void Register::on_ConfirmButton_clicked()
                         MainWindow *win = new MainWindow;
                         win->show();
                         this->close();
+                        WriteToFile(ui->AccountLineEdit->text(),ui->PasswordLineEdit->text());
                     }
                 else {
                     QMessageBox::warning(this, tr("Warning"), tr("Admin Password error !"), QMessageBox::Yes);

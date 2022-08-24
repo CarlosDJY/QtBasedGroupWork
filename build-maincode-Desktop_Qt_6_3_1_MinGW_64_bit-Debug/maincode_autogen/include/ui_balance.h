@@ -28,7 +28,12 @@ class Ui_Balance
 {
 public:
     QWidget *centralwidget;
-    QWidget *widget;
+    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout_2;
+    QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *verticalSpacer_3;
+    QSpacerItem *verticalSpacer_2;
+    QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_2;
     QLCDNumber *BalanceNum;
     QSpacerItem *verticalSpacer;
@@ -48,13 +53,29 @@ public:
         Balance->resize(800, 600);
         centralwidget = new QWidget(Balance);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(140, 130, 491, 281));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout = new QVBoxLayout(centralwidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_2, 1, 2, 1, 1);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_2->addItem(verticalSpacer_3, 2, 1, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_2->addItem(verticalSpacer_2, 0, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer, 1, 0, 1, 1);
+
+        verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        BalanceNum = new QLCDNumber(widget);
+        BalanceNum = new QLCDNumber(centralwidget);
         BalanceNum->setObjectName(QString::fromUtf8("BalanceNum"));
         BalanceNum->setMinimumSize(QSize(0, 60));
 
@@ -66,35 +87,35 @@ public:
 
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        plus10 = new QPushButton(widget);
+        plus10 = new QPushButton(centralwidget);
         plus10->setObjectName(QString::fromUtf8("plus10"));
         plus10->setMinimumSize(QSize(120, 60));
         plus10->setMaximumSize(QSize(120, 60));
 
         gridLayout->addWidget(plus10, 0, 0, 1, 1);
 
-        plus50 = new QPushButton(widget);
+        plus50 = new QPushButton(centralwidget);
         plus50->setObjectName(QString::fromUtf8("plus50"));
         plus50->setMinimumSize(QSize(120, 60));
         plus50->setMaximumSize(QSize(120, 60));
 
         gridLayout->addWidget(plus50, 0, 1, 1, 1);
 
-        plus100 = new QPushButton(widget);
+        plus100 = new QPushButton(centralwidget);
         plus100->setObjectName(QString::fromUtf8("plus100"));
         plus100->setMinimumSize(QSize(120, 60));
         plus100->setMaximumSize(QSize(120, 60));
 
         gridLayout->addWidget(plus100, 0, 2, 1, 1);
 
-        plusNum = new QLineEdit(widget);
+        plusNum = new QLineEdit(centralwidget);
         plusNum->setObjectName(QString::fromUtf8("plusNum"));
         plusNum->setMinimumSize(QSize(240, 40));
         plusNum->setMaximumSize(QSize(240, 40));
 
         gridLayout->addWidget(plusNum, 1, 0, 1, 2);
 
-        BackButton = new QPushButton(widget);
+        BackButton = new QPushButton(centralwidget);
         BackButton->setObjectName(QString::fromUtf8("BackButton"));
         BackButton->setMinimumSize(QSize(120, 60));
         BackButton->setMaximumSize(QSize(120, 60));
@@ -103,6 +124,12 @@ public:
 
 
         verticalLayout_2->addLayout(gridLayout);
+
+
+        gridLayout_2->addLayout(verticalLayout_2, 1, 1, 1, 1);
+
+
+        verticalLayout->addLayout(gridLayout_2);
 
         Balance->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Balance);

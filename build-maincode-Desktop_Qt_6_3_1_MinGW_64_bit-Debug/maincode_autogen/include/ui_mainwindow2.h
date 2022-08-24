@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -26,7 +27,8 @@ class Ui_MainWindow2
 {
 public:
     QWidget *centralwidget;
-    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout_2;
+    QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
     QPushButton *AccountButton;
@@ -35,6 +37,7 @@ public:
     QPushButton *pushButton;
     QSpacerItem *verticalSpacer_2;
     QFrame *line;
+    QSpacerItem *horizontalSpacer;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -45,43 +48,50 @@ public:
         MainWindow2->resize(800, 600);
         centralwidget = new QWidget(MainWindow2);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        verticalLayoutWidget = new QWidget(centralwidget);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(20, 0, 101, 551));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(75);
+        verticalLayout_2 = new QVBoxLayout(centralwidget);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setHorizontalSpacing(30);
+        gridLayout->setVerticalSpacing(10);
+        gridLayout->setContentsMargins(15, -1, -1, -1);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(60);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
 
-        AccountButton = new QPushButton(verticalLayoutWidget);
+        AccountButton = new QPushButton(centralwidget);
         AccountButton->setObjectName(QString::fromUtf8("AccountButton"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(AccountButton->sizePolicy().hasHeightForWidth());
         AccountButton->setSizePolicy(sizePolicy);
+        AccountButton->setMinimumSize(QSize(0, 40));
 
         verticalLayout->addWidget(AccountButton);
 
-        OrderButton = new QPushButton(verticalLayoutWidget);
+        OrderButton = new QPushButton(centralwidget);
         OrderButton->setObjectName(QString::fromUtf8("OrderButton"));
         sizePolicy.setHeightForWidth(OrderButton->sizePolicy().hasHeightForWidth());
         OrderButton->setSizePolicy(sizePolicy);
+        OrderButton->setMinimumSize(QSize(0, 40));
 
         verticalLayout->addWidget(OrderButton);
 
-        ProductButton = new QPushButton(verticalLayoutWidget);
+        ProductButton = new QPushButton(centralwidget);
         ProductButton->setObjectName(QString::fromUtf8("ProductButton"));
         sizePolicy.setHeightForWidth(ProductButton->sizePolicy().hasHeightForWidth());
         ProductButton->setSizePolicy(sizePolicy);
+        ProductButton->setMinimumSize(QSize(0, 40));
 
         verticalLayout->addWidget(ProductButton);
 
-        pushButton = new QPushButton(verticalLayoutWidget);
+        pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setMinimumSize(QSize(0, 40));
 
         verticalLayout->addWidget(pushButton);
 
@@ -89,11 +99,23 @@ public:
 
         verticalLayout->addItem(verticalSpacer_2);
 
+
+        gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
+
         line = new QFrame(centralwidget);
         line->setObjectName(QString::fromUtf8("line"));
-        line->setGeometry(QRect(130, 0, 20, 561));
         line->setFrameShape(QFrame::VLine);
         line->setFrameShadow(QFrame::Sunken);
+
+        gridLayout->addWidget(line, 0, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 0, 2, 1, 1);
+
+
+        verticalLayout_2->addLayout(gridLayout);
+
         MainWindow2->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow2);
         menubar->setObjectName(QString::fromUtf8("menubar"));

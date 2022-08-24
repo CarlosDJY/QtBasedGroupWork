@@ -7,6 +7,9 @@
 #include <stdio.h>
 #include <QFile>
 #include <qstring.h>
+
+QFile File1("Users.txt");
+
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Login)
@@ -29,10 +32,10 @@ void Login::on_BackButton_clicked()
 }
 
 int isExistingAccount(QString Q){
-    QFile File1("Users.txt");
-    File1.open(QIODevice::ReadOnly);
+    if(!File1.isOpen()){
+        File1.open(QIODevice::ReadOnly);
+    }
     QString Arr;
-    int i=0;
     while(!File1.atEnd())
        {
          Arr=(QString)File1.readLine();
@@ -48,31 +51,42 @@ int isExistingAccount(QString Q){
 }
 
 int isMappingPassword(QString Account, QString Password){
-    QFile File1("Users.txt");
-    File1.open(QIODevice::ReadOnly);
+
+    if(!File1.isOpen()){
+        File1.open(QIODevice::ReadOnly);
+    }
+    Password += "\n";
     QString Arr;
+
     int i=0;
+
     while(!File1.atEnd())
     {
          Arr=(QString)File1.readLine();
          QStringList P=Arr.split(' ');
          if(isExistingAccount(Account))
          {
-             qDebug()<<"rua";
-             if(QString::compare(P[1],Password)==0)
-             {
-                 return true;
+             File1.open(QIODevice::ReadOnly);
+             while(!File1.atEnd()){
+                 Arr=(QString)File1.readLine();
+                 P=Arr.split(' ');
+                 if(QString::compare(P[0],Account)==0&&QString::compare(P[1],Password)==0)
+                 {
+                     File1.close();
+                     return true;
+                 }
              }
          }
     }
+    File1.close();
     return false;
 }
 
 void Login::on_ConfirmButton_clicked()
 {
-    if(isExistingAccount(ui->AccountLineEdit->text())) {
-        QString Account = ui->AccountLineEdit->text();
-        if(isMappingPassword(Account, ui->PasswordLineEdit->text()))
+    if(isExistingAccount(ui->AccountLineEdit->text())){
+        QString AccountTmp = ui->AccountLineEdit->text();
+        if(isMappingPassword(AccountTmp, ui->PasswordLineEdit->text()))
         {
             MainWindow2 *win = new MainWindow2;
             win->show();
