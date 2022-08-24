@@ -20,6 +20,8 @@ public:
 private slots:
     void on_AccountButton_clicked();
 
+    void on_OrderButton_clicked();
+
 private:
     Ui::MainWindow2 *ui;
 };

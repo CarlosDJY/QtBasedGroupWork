@@ -1,5 +1,6 @@
 #include "mainwindow2.h"
 #include "accountcontrol.h"
+#include "orderinfo.h"
 #include "accountdetail.h"
 #include "ui_mainwindow2.h"
 
@@ -19,6 +20,14 @@ MainWindow2::~MainWindow2()
 void MainWindow2::on_AccountButton_clicked()
 {
     AccountControl *win = new AccountControl;
+    win->show();
+    this->hide();
+}
+
+
+void MainWindow2::on_OrderButton_clicked()
+{
+    OrderInfo *win = new OrderInfo;
     win->show();
     this->hide();
 }

@@ -55,6 +55,10 @@ set(PROJECT_SOURCES
         balance.cpp
         balance.ui
 
+        orderinfo.h
+        orderinfo.cpp
+        orderinfo.ui
+
         ${TS_FILES}
 )
 
