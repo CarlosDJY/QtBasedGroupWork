@@ -1,4 +1,5 @@
 #include "balance.h"
+#include "accountcontrol.h"
 #include "ui_balance.h"
 #include <QTimer>
 
@@ -52,5 +53,13 @@ void Balance::on_plusNum_returnPressed()
 {
     balance += ui->plusNum->text().toDouble();
     ui->plusNum->clear();
+}
+
+
+void Balance::on_BackButton_clicked()
+{
+    AccountControl *win = new AccountControl;
+    win->show();
+    this->close();
 }
 

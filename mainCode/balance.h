@@ -28,6 +28,8 @@ private slots:
 
     void on_plusNum_returnPressed();
 
+    void on_BackButton_clicked();
+
 private:
     Ui::Balance *ui;
 };
