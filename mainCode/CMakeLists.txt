@@ -63,6 +63,10 @@ set(PROJECT_SOURCES
         productsearch.cpp
         productsearch.ui
 
+        shoppingcart.h
+        shoppingcart.cpp
+        shoppingcart.ui
+
         ${TS_FILES}
 )
 

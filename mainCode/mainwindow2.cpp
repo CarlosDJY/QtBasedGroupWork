@@ -1,7 +1,8 @@
 #include "mainwindow2.h"
 #include "accountcontrol.h"
 #include "orderinfo.h"
-#include "ProductSearch.h"
+#include "productsearch.h"
+#include "shoppingcart.h"
 #include "ui_mainwindow2.h"
 
 MainWindow2::MainWindow2(QWidget *parent) :
@@ -36,6 +37,14 @@ void MainWindow2::on_OrderButton_clicked()
 void MainWindow2::on_ProductButton_clicked()
 {
     ProductSearch *win = new ProductSearch;
+    win->show();
+    this->hide();
+}
+
+
+void MainWindow2::on_pushButton_clicked()
+{
+    ShoppingCart *win = new ShoppingCart;
     win->show();
     this->hide();
 }
