@@ -59,6 +59,10 @@ set(PROJECT_SOURCES
         orderinfo.cpp
         orderinfo.ui
 
+        productsearch.h
+        productsearch.cpp
+        productsearch.ui
+
         ${TS_FILES}
 )
 

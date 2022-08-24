@@ -1,7 +1,7 @@
 #include "mainwindow2.h"
 #include "accountcontrol.h"
 #include "orderinfo.h"
-#include "accountdetail.h"
+#include "ProductSearch.h"
 #include "ui_mainwindow2.h"
 
 MainWindow2::MainWindow2(QWidget *parent) :
@@ -28,6 +28,14 @@ void MainWindow2::on_AccountButton_clicked()
 void MainWindow2::on_OrderButton_clicked()
 {
     OrderInfo *win = new OrderInfo;
+    win->show();
+    this->hide();
+}
+
+
+void MainWindow2::on_ProductButton_clicked()
+{
+    ProductSearch *win = new ProductSearch;
     win->show();
     this->hide();
 }

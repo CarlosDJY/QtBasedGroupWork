@@ -22,6 +22,8 @@ private slots:
 
     void on_OrderButton_clicked();
 
+    void on_ProductButton_clicked();
+
 private:
     Ui::MainWindow2 *ui;
 };

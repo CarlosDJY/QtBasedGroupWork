@@ -20,6 +20,15 @@ OrderInfo::OrderInfo(QWidget *parent) :
     model->setHorizontalHeaderItem(4, new QStandardItem(QObject::tr("订单状态")));
     ui->OrderTable->setModel(model);
     ui->OrderTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->OrderTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+
+    int i = 0;
+    while(i < 5){
+        ui->OrderTable->setColumnWidth(i,775/5-1);
+        ui->OrderTable->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Fixed);
+        i+=1;
+    }
+
 }
 
 OrderInfo::~OrderInfo()
