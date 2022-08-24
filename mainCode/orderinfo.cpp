@@ -1,7 +1,7 @@
 #include "orderinfo.h"
 #include "mainwindow2.h"
 #include "ui_orderinfo.h"
-#include <qtablewidget>
+#include <QTableWidget>
 #include <QHeaderView>
 #include <QStandardItemModel>
 

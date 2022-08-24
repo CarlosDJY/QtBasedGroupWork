@@ -21,6 +21,8 @@ public:
 private slots:
     void on_BackButton_clicked();
 
+    void on_BuyAll_clicked();
+
 private:
     Ui::ShoppingCart *ui;
 };

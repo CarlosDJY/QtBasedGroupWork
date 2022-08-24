@@ -67,6 +67,10 @@ set(PROJECT_SOURCES
         shoppingcart.cpp
         shoppingcart.ui
 
+        paypage.h
+        paypage.cpp
+        paypage.ui
+
         ${TS_FILES}
 )
 
