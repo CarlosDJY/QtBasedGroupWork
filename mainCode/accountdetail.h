@@ -5,8 +5,8 @@
 #include <QProcess>
 #include <QMessageBox>
 
-extern int DetailReady;
 extern int NeedEdit;
+bool isDetailReady();
 
 namespace Ui {
 class AccountDetail;
@@ -21,6 +21,7 @@ public:
     ~AccountDetail();
 
 private slots:
+
     void on_ReturnButton_clicked();
 
     void on_SaveButton_clicked();

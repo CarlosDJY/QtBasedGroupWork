@@ -14,11 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>250</y>
+      <x>170</x>
+      <y>260</y>
       <width>431</width>
       <height>211</height>
      </rect>
@@ -101,6 +101,25 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="BackButton">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>490</y>
+      <width>93</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>60</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="text">
+     <string> 返回</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

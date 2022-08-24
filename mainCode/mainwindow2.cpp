@@ -9,11 +9,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("网上超市系统");
-
-    if(!DetailReady){
-        ui->OrderButton->setEnabled(false);
-        ui->ProductButton->setEnabled(false);
-    }
 }
 
 MainWindow2::~MainWindow2()
@@ -25,6 +20,6 @@ void MainWindow2::on_AccountButton_clicked()
 {
     AccountControl *win = new AccountControl;
     win->show();
-    this->close();
+    this->hide();
 }
 

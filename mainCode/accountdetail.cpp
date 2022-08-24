@@ -9,10 +9,10 @@
 
 using namespace std;
 
-QFile Account("account.txt");
-
 int DetailReady = 0;
 int NeedEdit = 5;
+
+QFile Account("account.txt");
 
 int editCount = 0;
 int Sex = 0;
@@ -35,6 +35,10 @@ AccountDetail::~AccountDetail()
     delete ui;
 }
 
+bool isDetailReady(){
+    return DetailReady;
+}
+
 void AccountDetail::on_ReturnButton_clicked()
 {
     if(NeedEdit > 0){
@@ -49,7 +53,7 @@ void AccountDetail::on_ReturnButton_clicked()
     else{
         AccountControl *win = new AccountControl;
         win->show();
-        this->close();
+        this->hide();
     }
 }
 
@@ -84,7 +88,7 @@ void AccountDetail::on_SaveButton_clicked()
         editCount = 0;
         AccountControl *win = new AccountControl;
         win->show();
-        this->close();
+        this->hide();
     }
     else {
         Account.open(QIODeviceBase::ReadWrite);
@@ -96,7 +100,7 @@ void AccountDetail::on_SaveButton_clicked()
         editCount = 0;
         AccountControl *win = new AccountControl;
         win->show();
-        this->close();
+        this->hide();
     }
 }
 

@@ -20,12 +20,12 @@
       <x>20</x>
       <y>0</y>
       <width>101</width>
-      <height>569</height>
+      <height>551</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
-      <number>110</number>
+      <number>75</number>
      </property>
      <item>
       <spacer name="verticalSpacer">
@@ -76,6 +76,13 @@
        </property>
        <property name="text">
         <string>商品查询</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>购物车</string>
        </property>
       </widget>
      </item>

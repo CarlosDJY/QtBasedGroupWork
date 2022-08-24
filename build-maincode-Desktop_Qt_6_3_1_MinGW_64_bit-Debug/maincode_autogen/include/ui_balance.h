@@ -17,7 +17,9 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,8 +28,10 @@ class Ui_Balance
 {
 public:
     QWidget *centralwidget;
-    QLCDNumber *BalanceNum;
     QWidget *widget;
+    QVBoxLayout *verticalLayout_2;
+    QLCDNumber *BalanceNum;
+    QSpacerItem *verticalSpacer;
     QGridLayout *gridLayout;
     QPushButton *plus10;
     QPushButton *plus50;
@@ -44,15 +48,24 @@ public:
         Balance->resize(800, 600);
         centralwidget = new QWidget(Balance);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        BalanceNum = new QLCDNumber(centralwidget);
-        BalanceNum->setObjectName(QString::fromUtf8("BalanceNum"));
-        BalanceNum->setGeometry(QRect(240, 70, 261, 91));
         widget = new QWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(130, 270, 491, 191));
-        gridLayout = new QGridLayout(widget);
+        widget->setGeometry(QRect(140, 130, 491, 281));
+        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        BalanceNum = new QLCDNumber(widget);
+        BalanceNum->setObjectName(QString::fromUtf8("BalanceNum"));
+        BalanceNum->setMinimumSize(QSize(0, 60));
+
+        verticalLayout_2->addWidget(BalanceNum);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
+        gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
         plus10 = new QPushButton(widget);
         plus10->setObjectName(QString::fromUtf8("plus10"));
         plus10->setMinimumSize(QSize(120, 60));
@@ -87,6 +100,9 @@ public:
         BackButton->setMaximumSize(QSize(120, 60));
 
         gridLayout->addWidget(BackButton, 1, 2, 1, 1);
+
+
+        verticalLayout_2->addLayout(gridLayout);
 
         Balance->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Balance);
