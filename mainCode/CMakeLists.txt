@@ -71,6 +71,10 @@ set(PROJECT_SOURCES
         paypage.cpp
         paypage.ui
 
+        productinfo.h
+        productinfo.cpp
+        productinfo.ui
+
         ${TS_FILES}
 )
 

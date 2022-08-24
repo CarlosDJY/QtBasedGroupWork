@@ -1,8 +1,10 @@
 #include "paypage.h"
 #include "orderinfo.h"
 #include "ui_paypage.h"
+#include <QTime>
+#include <QtGlobal>
 
-int VerificationCode = 1234;
+int VerificationCode = 0;
 
 PayPage::PayPage(QWidget *parent) :
     QMainWindow(parent),
@@ -10,8 +12,12 @@ PayPage::PayPage(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("网上超市系统");
-    ui->VerifyNumber->display(VerificationCode);
+
     ui->VerifyCodeEdit->setMaxLength(4);
+
+    srand(QTime(0,0,0).secsTo(QTime::currentTime()));
+    VerificationCode = rand()%9000 + 1000;
+    ui->VerifyNumber->display(VerificationCode);
 }
 
 PayPage::~PayPage()
