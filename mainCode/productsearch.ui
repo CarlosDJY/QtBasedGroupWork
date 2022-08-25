@@ -44,23 +44,7 @@
         <property name="verticalSpacing">
          <number>0</number>
         </property>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEdit_2">
-          <property name="minimumSize">
-           <size>
-            <width>250</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>250</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
+        <item row="2" column="0">
          <widget class="QLabel" name="label_2">
           <property name="minimumSize">
            <size>
@@ -76,6 +60,22 @@
           </property>
           <property name="text">
            <string>超市名称</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lineEdit">
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>250</width>
+            <height>16777215</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -98,8 +98,8 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit">
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="lineEdit_2">
           <property name="minimumSize">
            <size>
             <width>250</width>
@@ -114,7 +114,20 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="2">
+        <item row="0" column="2">
+         <widget class="QCheckBox" name="checkBox">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>仅显示促销</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
          <widget class="QComboBox" name="comboBox">
           <property name="minimumSize">
            <size>
@@ -139,18 +152,8 @@
           </item>
          </widget>
         </item>
-        <item row="0" column="2">
-         <widget class="QCheckBox" name="checkBox">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>仅显示促销</string>
-          </property>
-         </widget>
+        <item row="1" column="1">
+         <widget class="QTableView" name="tableView"/>
         </item>
        </layout>
       </item>
@@ -195,9 +198,6 @@
          </size>
         </property>
        </spacer>
-      </item>
-      <item row="1" column="0" colspan="6">
-       <widget class="QTableView" name="tableView"/>
       </item>
       <item row="2" column="0" colspan="4">
        <spacer name="horizontalSpacer">
@@ -250,7 +250,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>

@@ -17,7 +17,6 @@ void WriteToFile(QString UserName,QString Password)
     QString Arr=UserName+' '+Password+'\n';
     std::string s=Arr.toStdString();
     const char* res=s.c_str();
-    qDebug() << Arr;
     Q.write(res);
     Q.close();
 }
