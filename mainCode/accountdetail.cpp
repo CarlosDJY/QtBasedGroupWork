@@ -14,7 +14,8 @@ using namespace std;
 
 /*
  *
- *暂时缺少判断数据是否合理这一功能；未接入余额与偏好模块
+ *暂时缺少判断数据是否合理这一功能；
+ *未接入余额与偏好模块(已完成）
  *
  */
 
@@ -44,7 +45,7 @@ AccountDetail::AccountDetail(QWidget *parent) :
     ui->IDEdit->setReadOnly(true);
     //密码和手机号限制长度
     ui->PasswordEdit->setMaxLength(10);
-    ui->PhoneEdit->setMaxLength(13);
+    ui->PhoneEdit->setMaxLength(11);
 
     Account.open(QIODevice::ReadOnly);
     //将对应的account数据行读入Ac中
@@ -60,7 +61,7 @@ AccountDetail::AccountDetail(QWidget *parent) :
     DetailReady = 7 - Ac.length();
     NeedEdit = 7 - Ac.length();
 
-    while(Ac.length()<8){
+    while(Ac.length()<9){
         Ac << "";
     }
 
@@ -113,8 +114,15 @@ void AccountDetail::on_SaveButton_clicked()
         if(QString::compare(Ac[7],"")==0){
             Ac[7] = "44.5";
         }
-        if(QString::compare(Ac[1].at(Ac[1].size() - 1),"\n")==0){
-            Ac[1].chop(1);
+        if(QString::compare(Ac[8],"")==0){
+            Ac[8] = "222";
+        }
+        int i = 0;
+        while(i < Ac.length()-1){
+            if(QString::compare(Ac[i].at(Ac[i].size() - 1),"\n")==0){
+                Ac[i].chop(1);
+            }
+            i++;
         }
         QString AcInfo = Ac.join(" ");
         qDebug() << AcInfo;
@@ -158,7 +166,6 @@ void ReplaceLine(QString AccountID, QString Info){
     }
 
 }
-
 
 
 int NameNotEdit = 1;

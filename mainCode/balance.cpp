@@ -15,7 +15,7 @@ QString ArrB;
 QStringList AcB;
 
 //初始账户余额
-double balance = 45.50;
+double balance;
 
 //账户余额查询与充值
 Balance::Balance(QWidget *parent) :
@@ -116,8 +116,12 @@ void Balance::on_BackButton_clicked()
 {
     //更新余额
     //写入AcB
-    if(QString::compare(AcB[1].at(AcB[1].size() - 1),"\n")==0){
-        AcB[1].chop(1);
+    int i = 0;
+    while(i < AcB.length()-1){
+        if(QString::compare(AcB[i].at(AcB[i].size() - 1),"\n")==0){
+            AcB[i].chop(1);
+        }
+        i++;
     }
     AcB[7] = QString::number(balance, 'f', 2);
     QString AcInfoB = AcB.join(" ");
