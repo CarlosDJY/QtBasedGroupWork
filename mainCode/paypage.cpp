@@ -10,9 +10,13 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
+
 int VerificationCode = 0;
 double balancePay;
-double price = 44.5;
+extern double NumToPay;
+
+double price;
+
 extern QString AccountInfomation;
 QFile AccountPay("Users.txt");
 QString ArrPay;
@@ -41,7 +45,7 @@ PayPage::PayPage(QWidget *parent) :
         }
     }
     balancePay = AcPay[7].toDouble();
-
+    price = NumToPay;
     ui->PriceNumber->display(price);
 
     //随机生成验证码
