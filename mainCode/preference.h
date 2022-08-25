@@ -21,6 +21,18 @@ public:
 private slots:
     void on_BackButton_clicked();
 
+    void on_PriceHigh_clicked();
+
+    void on_PriceLow_clicked();
+
+    void on_DiscountHigh_clicked();
+
+    void on_DiscountLow_clicked();
+
+    void on_SalesHigh_clicked();
+
+    void on_SalesLow_clicked();
+
 private:
     Ui::Preference *ui;
 };
