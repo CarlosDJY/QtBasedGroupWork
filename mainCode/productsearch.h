@@ -15,8 +15,8 @@ struct Good
     QString Shop;
     QString ID;
     int Storage;
-    time_t EndTime;
-    time_t StartTime;
+    struct tm EndTime;
+    struct tm StartTime;
 };
 typedef struct Good Good;
 namespace Ui {

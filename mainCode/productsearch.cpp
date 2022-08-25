@@ -16,9 +16,9 @@ void Test()
 {
     QFile Q("Goods.txt");
     Q.open(QIODevice::WriteOnly);
-    Q.write("国际学院本科毕业证 70000 1.0 1.0 北邮 AA0001 1 1000 2000\n");
-    Q.write("伦敦玛丽女王大学学士学位证 70000 1.0 0.8 QMUL AA0002 1 1000 2000\n");
-    Q.write("《我在成都火车站捡了个彝族美女》 1.6 1.0 0.8 北邮 AA0001 1 1000 2000\n");
+    Q.write("国际学院本科毕业证 70000 1.0 1.0 北邮 AA0001 1  \n");
+    Q.write("伦敦玛丽女王大学学士学位证 70000 1.0 0.8 QMUL AA0002 1 2021 10 01 12 00 2019 10 01 12 00\n");
+    Q.write("《我在成都火车站捡了个彝族美女》 1.6 1.0 0.8 广西玉林高中 AA0001 1 2021 10 01 12 00 2019 10 01 12 00\n");
     Q.close();
 }
 int WriteToMemory()
@@ -42,9 +42,16 @@ int WriteToMemory()
                  continue;
             }
             else{
-                ExistGoods[i].EndTime=P[7].toLong();
-                QStringList Tmp=P[8].split('\n');
-                ExistGoods[i].StartTime=Tmp[0].toLong();
+                ExistGoods[i].EndTime.tm_year=P[7].toInt();
+                ExistGoods[i].EndTime.tm_mon=P[8].toInt();
+                ExistGoods[i].EndTime.tm_mday=P[9].toInt();
+                ExistGoods[i].EndTime.tm_hour=P[10].toInt();
+                ExistGoods[i].EndTime.tm_min=P[11].toInt();
+                ExistGoods[i].StartTime.tm_year=P[12].toInt();
+                ExistGoods[i].StartTime.tm_mon=P[13].toInt();
+                ExistGoods[i].StartTime.tm_mday=P[14].toInt();
+                ExistGoods[i].StartTime.tm_hour=P[15].toInt();//开始时间有问题
+                ExistGoods[i].StartTime.tm_min=P[16].toInt();
                 i++;
             }
         }
@@ -193,7 +200,7 @@ void ProductSearch::on_pushButton_3_clicked()
     QString GoodName=ui->lineEdit->text();
     QString ShopName=ui->lineEdit_2->text();
     QStandardItemModel* model = new QStandardItemModel(this);
-    QStringList labels = QObject::tr("名称,售价,折扣,卖家,库存,折扣结束时间,折扣开始时间").simplified().split(",");
+    QStringList labels = QObject::tr("名称,售价,折扣,超市名称,库存,折扣结束时间,折扣开始时间").simplified().split(",");
     model->setHorizontalHeaderLabels(labels);
     ui->tableView->setStyleSheet("QTableView { border: none;"
                                      "selection-background-color: #8EDE21;"
@@ -271,7 +278,17 @@ void ProductSearch::on_pushButton_3_clicked()
         model->setItem(i,3,new QStandardItem(ExistGoods[i].Shop));
         QString Storage=QString::number(ExistGoods[i].Storage,10);
         model->setItem(i,4,new QStandardItem(Storage));
-        i++;
+        if(ExistGoods[i].StartTime.tm_year!=0){
+            QString EndTime=QString::number(ExistGoods[i].EndTime.tm_year)+":"+QString::number(ExistGoods[i].EndTime.tm_mon)+":"+QString::number(ExistGoods[i].EndTime.tm_mday)+":"+QString::number(ExistGoods[i].EndTime.tm_hour)+":"+QString::number(ExistGoods[i].EndTime.tm_min);
+            QString StartTime=QString::number(ExistGoods[i].StartTime.tm_year)+":"+QString::number(ExistGoods[i].StartTime.tm_mon)+":"+QString::number(ExistGoods[i].StartTime.tm_mday)+QString::number(ExistGoods[i].StartTime.tm_hour)+":"+QString::number(ExistGoods[i].StartTime.tm_min);
+            model->setItem(i,5,new QStandardItem(EndTime));
+            model->setItem(i,6,new QStandardItem(StartTime));
+            i++;
+        }
+        else
+        {
+            i++;
+        }
     }
 }
 
