@@ -34,6 +34,12 @@ public:
 private slots:
     void on_BackButton_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_checkBox_stateChanged(int arg1);
+
+    void on_tableView_objectNameChanged(const QString &objectName);
+
 private:
     Ui::ProductSearch *ui;
 };
