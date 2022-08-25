@@ -17,6 +17,9 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QGridLayout" name="gridLayout_2">
+      <property name="verticalSpacing">
+       <number>30</number>
+      </property>
       <item row="0" column="0">
        <spacer name="verticalSpacer">
         <property name="orientation">
@@ -359,13 +362,13 @@
             <property name="minimumSize">
              <size>
               <width>100</width>
-              <height>60</height>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>100</width>
-              <height>60</height>
+              <height>40</height>
              </size>
             </property>
             <property name="text">
