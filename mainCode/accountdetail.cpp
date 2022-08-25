@@ -2,7 +2,6 @@
 #include "accountcontrol.h"
 #include "ui_accountdetail.h"
 #include <stdio.h>
-#include "login.h"
 
 #include <QLineEdit>
 #include <QFile>
@@ -13,6 +12,12 @@
 
 using namespace std;
 
+/*
+ *
+ *暂时缺少判断数据是否合理这一功能；未接入余额与偏好模块
+ *
+ */
+
 //更改用户信息
 
 extern QString AccountInfomation;
@@ -22,7 +27,6 @@ int NeedEdit = 5;
 QFile Account("Users.txt");
 
 QString Arr;
-
 QStringList Ac;
 void ReplaceLine(QString AccountID, QString Info);
 
@@ -53,29 +57,24 @@ AccountDetail::AccountDetail(QWidget *parent) :
             break;
         }
     }
+    DetailReady = 7 - Ac.length();
     NeedEdit = 7 - Ac.length();
 
-    while(Ac.length()<7){
+    while(Ac.length()<8){
         Ac << "";
     }
 
     //性别暂未设置
-    Ac[1].chop(1);
     ui->IDEdit->setText(Ac[0]);
     ui->PasswordEdit->setText(Ac[1]);
     ui->NameEdit->setText(Ac[2]);
+    ui->MaleChoose->setChecked(Ac[3]=="1");
+    ui->FemaleChoose->setChecked(Ac[3]=="2");
+    ui->SecretChoose->setChecked(Ac[3]=="3");
     ui->PhoneEdit->setText(Ac[4]);
     ui->MailEdit->setText(Ac[5]);
     ui->AddressEdit->setText(Ac[6]);
 
-    qDebug()<< Ac.length();
-
-    Account.open(QIODevice::ReadOnly);
-    Arr=(QString)Account.readAll();
-    QStringList P = Arr.split("\n");
-    qDebug() << Arr;
-    qDebug() << P;
-    Account.close();
 }
 
 AccountDetail::~AccountDetail()
@@ -83,16 +82,12 @@ AccountDetail::~AccountDetail()
     delete ui;
 }
 
-bool isDetailReady(){
-    return DetailReady;
-}
-
 void AccountDetail::on_ReturnButton_clicked()
 {
     if(NeedEdit > 0){
         QMessageBox::warning(this, tr("Warning"), tr("Edit not Complete !"), QMessageBox::Ok);
     }
-    else if(DetailReady == 0){
+    else if(!DetailReady){
         QMessageBox::warning(this, tr("Warning"), tr("Save Edit First !"), QMessageBox::Ok);
     }
     else{
@@ -108,14 +103,21 @@ void AccountDetail::on_SaveButton_clicked()
     //update all data "Account.txt",
 
     //尚未完成初次编辑
-    if(NeedEdit != 0){
+    if(NeedEdit > 0){
         QMessageBox::warning(this, tr("Warning"), tr("Edit not Complete !"), QMessageBox::Ok);
     }
 
     //已完成初次编辑
     else {
         //写入Ac
+        if(QString::compare(Ac[7],"")==0){
+            Ac[7] = "44.5";
+        }
+        if(QString::compare(Ac[1].at(Ac[1].size() - 1),"\n")==0){
+            Ac[1].chop(1);
+        }
         QString AcInfo = Ac.join(" ");
+        qDebug() << AcInfo;
 
         ReplaceLine(AccountInfomation, AcInfo);
 
@@ -138,7 +140,8 @@ void ReplaceLine(QString AccountID, QString Info){
 
     while(true){
         ArrTag = P[count].split(" ");
-        if(QString::compare(ArrTag[count],AccountID)==0){
+        if(QString::compare(ArrTag[0],AccountID)==0){
+
             P[count] = Info;
             Account.close();
 
@@ -155,6 +158,8 @@ void ReplaceLine(QString AccountID, QString Info){
     }
 
 }
+
+
 
 int NameNotEdit = 1;
 void AccountDetail::on_NameEdit_editingFinished()
@@ -226,6 +231,14 @@ void AccountDetail::on_AddressEdit_editingFinished()
         Ac[6] = ui->AddressEdit->text();
         AddressNotEdit = 0;
         NeedEdit -= 1;
+    }
+}
+
+
+void AccountDetail::on_PasswordEdit_editingFinished()
+{
+    if(ui->PasswordEdit->text()!=""){
+        Ac[1] = ui->PasswordEdit->text();
     }
 }
 
