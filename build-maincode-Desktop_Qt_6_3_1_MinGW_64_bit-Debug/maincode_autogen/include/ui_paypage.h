@@ -36,7 +36,7 @@ public:
     QGridLayout *gridLayout;
     QSpacerItem *horizontalSpacer_6;
     QLabel *label_2;
-    QLCDNumber *lcdNumber_2;
+    QLCDNumber *PriceNumber;
     QLabel *label_3;
     QSpacerItem *horizontalSpacer_7;
     QLabel *label;
@@ -88,12 +88,12 @@ public:
 
         gridLayout->addWidget(label_2, 0, 1, 1, 2);
 
-        lcdNumber_2 = new QLCDNumber(centralwidget);
-        lcdNumber_2->setObjectName(QString::fromUtf8("lcdNumber_2"));
-        lcdNumber_2->setMinimumSize(QSize(150, 0));
-        lcdNumber_2->setMaximumSize(QSize(200, 50));
+        PriceNumber = new QLCDNumber(centralwidget);
+        PriceNumber->setObjectName(QString::fromUtf8("PriceNumber"));
+        PriceNumber->setMinimumSize(QSize(150, 0));
+        PriceNumber->setMaximumSize(QSize(200, 50));
 
-        gridLayout->addWidget(lcdNumber_2, 0, 3, 1, 2);
+        gridLayout->addWidget(PriceNumber, 0, 3, 1, 2);
 
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));

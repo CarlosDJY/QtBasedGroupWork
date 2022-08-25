@@ -102,8 +102,3 @@ void Login::on_ConfirmButton_clicked()
         QMessageBox::warning(this, tr("Warning"), tr("User name or Password error !"), QMessageBox::Ok);
     }
 }
-
-//返回用户ID，用于后续用户相关操作
-QString AccountInfo(){
-    return AccountInfomation;
-}

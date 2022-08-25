@@ -23,7 +23,11 @@ private slots:
 
     void on_BuyAll_clicked();
 
-    void on_BuyChosen_clicked();
+    void on_NextPage_clicked();
+
+    void on_FindCart_clicked();
+
+    void on_PrevPage_clicked();
 
 private:
     Ui::ShoppingCart *ui;

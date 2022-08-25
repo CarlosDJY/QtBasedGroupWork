@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>812</width>
     <height>600</height>
    </rect>
   </property>
@@ -18,29 +18,45 @@
     <item>
      <layout class="QGridLayout" name="gridLayout">
       <property name="leftMargin">
-       <number>30</number>
+       <number>10</number>
       </property>
       <property name="topMargin">
        <number>10</number>
       </property>
       <property name="rightMargin">
-       <number>30</number>
+       <number>10</number>
       </property>
       <property name="bottomMargin">
        <number>10</number>
       </property>
       <property name="horizontalSpacing">
-       <number>50</number>
+       <number>20</number>
       </property>
-      <item row="0" column="0" colspan="3">
+      <property name="verticalSpacing">
+       <number>10</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="PrevPage">
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>上一页</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2">
        <spacer name="horizontalSpacer_3">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>268</width>
-          <height>17</height>
+          <width>198</width>
+          <height>21</height>
          </size>
         </property>
        </spacer>
@@ -52,18 +68,31 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="5" colspan="3">
+      <item row="0" column="5" colspan="2">
        <spacer name="horizontalSpacer_4">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>250</width>
-          <height>17</height>
+          <width>187</width>
+          <height>27</height>
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="0" column="7">
+       <widget class="QPushButton" name="NextPage">
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>下一页</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0" colspan="8">
        <widget class="Line" name="line">
@@ -87,15 +116,37 @@
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>13</width>
-          <height>20</height>
+          <width>92</width>
+          <height>26</height>
          </size>
         </property>
        </spacer>
       </item>
       <item row="4" column="1">
+       <widget class="QPushButton" name="FindCart">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>查询</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2" colspan="2">
        <widget class="QPushButton" name="BuyAll">
         <property name="minimumSize">
          <size>
@@ -103,34 +154,33 @@
           <height>0</height>
          </size>
         </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>全部购买</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="2" colspan="2">
-       <widget class="QPushButton" name="BuyChosen">
-        <property name="minimumSize">
-         <size>
-          <width>120</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>购买选中</string>
-        </property>
-       </widget>
-      </item>
       <item row="4" column="4" colspan="2">
-       <widget class="QPushButton" name="DeleteChosen">
+       <widget class="QPushButton" name="DeleteAll">
         <property name="minimumSize">
          <size>
           <width>120</width>
           <height>0</height>
          </size>
         </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
-         <string>删除选中</string>
+         <string>全部删除</string>
         </property>
        </widget>
       </item>
@@ -140,6 +190,12 @@
          <size>
           <width>120</width>
           <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>16777215</height>
          </size>
         </property>
         <property name="text">
@@ -152,10 +208,13 @@
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>13</width>
-          <height>20</height>
+          <width>92</width>
+          <height>26</height>
          </size>
         </property>
        </spacer>
@@ -169,7 +228,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>812</width>
      <height>26</height>
     </rect>
    </property>

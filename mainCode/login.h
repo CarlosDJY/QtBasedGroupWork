@@ -21,12 +21,6 @@ private slots:
 
     void on_ConfirmButton_clicked();
 
-    void on_AccountLineEdit_editingFinished();
-
-    void on_PasswordLineEdit_editingFinished();
-
-    void on_AccountLineEdit_textChanged(const QString &arg1);
-
 private:
     Ui::Login *ui;
 };
