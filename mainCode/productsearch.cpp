@@ -3,7 +3,7 @@
 #include "ui_productsearch.h"
 #include <QFile>
 #include "productsearch.h"
-#include <ctime>
+#include <time.h>
 #include <QString>
 #include <QMainWindow>
 #include <QStringListModel>
@@ -16,7 +16,9 @@ void Test()
 {
     QFile Q("Goods.txt");
     Q.open(QIODevice::WriteOnly);
-    Q.write("A 2.0 1.0 1.0 1 AA0001 1 1000 2000\n");
+    Q.write("国际学院本科毕业证 70000 1.0 1.0 北邮 AA0001 1 1000 2000\n");
+    Q.write("伦敦玛丽女王大学学士学位证 70000 1.0 0.8 QMUL AA0002 1 1000 2000\n");
+    Q.write("《我在成都火车站捡了个彝族美女》 1.6 1.0 0.8 北邮 AA0001 1 1000 2000\n");
     Q.close();
 }
 int WriteToMemory()
@@ -46,7 +48,7 @@ int WriteToMemory()
                 i++;
             }
         }
-        return i+1;
+        return i;
 }
 int SearchByName(int n,QString Search){
     if(n==0){
@@ -186,6 +188,7 @@ void ProductSearch::on_BackButton_clicked()
 
 void ProductSearch::on_pushButton_3_clicked()
 {
+    Test();
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     QString GoodName=ui->lineEdit->text();
     QString ShopName=ui->lineEdit_2->text();
@@ -200,7 +203,10 @@ void ProductSearch::on_pushButton_3_clicked()
     int flag;
     if(ui->checkBox->isChecked()==true)
     {
-        if(QString::compare(ShopName,"")==0){
+        if(QString::compare(ShopName,"")==0&&QString::compare(GoodName,"")==0){
+            flag=SearchForDiscount(WriteToMemory());
+        }
+        else if(QString::compare(ShopName,"")==0){
             flag=SearchByName(SearchForDiscount(WriteToMemory()),GoodName);
         }
         else if(QString::compare(GoodName,"")==0){
@@ -227,7 +233,10 @@ void ProductSearch::on_pushButton_3_clicked()
      }
     else
     {
-        if(QString::compare(ShopName,"")==0){
+        if(QString::compare(ShopName,"")==0&&QString::compare(GoodName,"")==0){
+            flag=(WriteToMemory());
+        }
+        else if(QString::compare(ShopName,"")==0){
                     flag=SearchByName(WriteToMemory(),GoodName);
                 }
         else if(QString::compare(GoodName,"")==0){
@@ -239,7 +248,8 @@ void ProductSearch::on_pushButton_3_clicked()
         if(flag==0){
             return;
         }
-        switch (ui->comboBox->currentIndex()) {
+        switch (ui->comboBox->currentIndex())
+        {
         case 1:
             SortingByTheSaledAmount(flag);
             break;
@@ -251,7 +261,18 @@ void ProductSearch::on_pushButton_3_clicked()
             break;
         }
     }
-
+    int i=0;
+    while(i<flag){
+        QString Sell= QString::number(ExistGoods[i].SellPrice,'f',2);
+        model->setItem(i,0,new QStandardItem(ExistGoods[i].Name));
+        model->setItem(i,1,new QStandardItem(Sell));
+        QString Discount=QString::number(ExistGoods[i].Discount,'f',2);
+        model->setItem(i,2,new QStandardItem(Discount));
+        model->setItem(i,3,new QStandardItem(ExistGoods[i].Shop));
+        QString Storage=QString::number(ExistGoods[i].Storage,10);
+        model->setItem(i,4,new QStandardItem(Storage));
+        i++;
+    }
 }
 
 
