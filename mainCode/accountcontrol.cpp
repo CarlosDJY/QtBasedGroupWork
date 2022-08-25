@@ -6,6 +6,7 @@
 #include "preference.h"
 #include "ui_accountcontrol.h"
 
+//账号管理界面，导航至用户信息更改、余额充值、用户偏好更改、登出
 AccountControl::AccountControl(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AccountControl)
@@ -19,6 +20,7 @@ AccountControl::~AccountControl()
     delete ui;
 }
 
+//退出登录，回到主界面1
 void AccountControl::on_LogOutButton_clicked()
 {
     MainWindow *win = new MainWindow;
@@ -26,7 +28,7 @@ void AccountControl::on_LogOutButton_clicked()
     this->close();
 }
 
-
+//更改用户信息
 void AccountControl::on_AccountButton_clicked()
 {
     AccountDetail *win = new AccountDetail;
@@ -34,7 +36,7 @@ void AccountControl::on_AccountButton_clicked()
     this->close();
 }
 
-
+//更改用户偏好
 void AccountControl::on_PreferenceButton_clicked()
 {
     Preference *win = new Preference;
@@ -42,7 +44,7 @@ void AccountControl::on_PreferenceButton_clicked()
     this->close();
 }
 
-
+//用户余额充值
 void AccountControl::on_BalanceButton_clicked()
 {
     Balance *win = new Balance;
@@ -50,7 +52,7 @@ void AccountControl::on_BalanceButton_clicked()
     this->close();
 }
 
-
+//返回主菜单
 void AccountControl::on_BackButton_clicked()
 {
     MainWindow2 *win = new MainWindow2;

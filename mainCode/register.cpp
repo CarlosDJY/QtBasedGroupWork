@@ -9,6 +9,7 @@
 using namespace std;
 QString AdminPw = "123";
 
+//将用户名与密码写入文件
 void WriteToFile(QString UserName,QString Password)
 {
     QFile Q("Users.txt");
@@ -19,6 +20,8 @@ void WriteToFile(QString UserName,QString Password)
     Q.write(res);
     Q.close();
 }
+
+//注册界面，输入账号和密码，输入管理员密码以注册管理员帐号
 Register::Register(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Register)
@@ -37,6 +40,7 @@ Register::~Register()
     delete ui;
 }
 
+//返回主菜单，取消注册
 void Register::on_BackButton_clicked()
 {
     MainWindow *win = new MainWindow;
@@ -46,6 +50,7 @@ void Register::on_BackButton_clicked()
 
 QFile FileReg("Users.txt");
 
+//查询该用户ID是否已被注册
 int isReusedAccount(QString Q){
     if(!FileReg.isOpen()){
         FileReg.open(QIODevice::ReadOnly);
@@ -65,7 +70,7 @@ int isReusedAccount(QString Q){
     return false;
 }
 
-//待补充：判断字符串是否符合要求
+//判断字符串是否符合要求
 int isValidID(QString Q)
 {
     if(Q.length()<6||Q.length()>10)
@@ -89,23 +94,28 @@ int isValidID(QString Q)
     return 0;
 }
 
+//确认注册
 void Register::on_ConfirmButton_clicked()
 {
     if(!isReusedAccount(ui->AccountLineEdit->text())){
         if (isValidID(ui->AccountLineEdit->text())){
             if (isValidID(ui->PasswordLineEdit->text())){
+
+                //管理员注册
                 if(ui->AdminPasswordLineEdit->text()==AdminPw){
                     MainWindow *win = new MainWindow;
                     win->show();
                     this->close();
                     WriteToFile(ui->AccountLineEdit->text(),ui->PasswordLineEdit->text());
                     }
+                //顾客注册
                 else if(ui->AdminPasswordLineEdit->text()==""){
                         MainWindow *win = new MainWindow;
                         win->show();
                         this->close();
                         WriteToFile(ui->AccountLineEdit->text(),ui->PasswordLineEdit->text());
                     }
+
                 else {
                     QMessageBox::warning(this, tr("Warning"), tr("Admin Password error !"), QMessageBox::Ok);
                 }

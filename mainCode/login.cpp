@@ -11,6 +11,7 @@
 QFile File1("Users.txt");
 QString AccountInfomation;
 
+//登录模块
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Login)
@@ -25,6 +26,7 @@ Login::~Login()
     delete ui;
 }
 
+//返回主界面
 void Login::on_BackButton_clicked()
 {
     MainWindow *win = new MainWindow;
@@ -32,6 +34,7 @@ void Login::on_BackButton_clicked()
     this->close();
 }
 
+//检测用户ID是否存在
 int isExistingAccount(QString Q){
     if(!File1.isOpen()){
         File1.open(QIODevice::ReadOnly);
@@ -51,15 +54,13 @@ int isExistingAccount(QString Q){
     return false;
 }
 
+//检测用户ID对应的密码是否正确
 int isMappingPassword(QString Account, QString Password){
 
     if(!File1.isOpen()){
         File1.open(QIODevice::ReadOnly);
     }
-    Password += "\n";
     QString Arr;
-
-    int i=0;
 
     while(!File1.atEnd())
     {
@@ -70,8 +71,9 @@ int isMappingPassword(QString Account, QString Password){
              File1.open(QIODevice::ReadOnly);
              while(!File1.atEnd()){
                  Arr=(QString)File1.readLine();
+                 Arr.chop(1);
                  P=Arr.split(' ');
-                 if(QString::compare(P[0],Account)==0&&QString::compare(P[1],Password)==0)
+                 if(QString::compare(P[0],Account)==0 && QString::compare(P[1],Password)==0)
                  {
                      AccountInfomation = P[0];
                      File1.close();
@@ -84,6 +86,7 @@ int isMappingPassword(QString Account, QString Password){
     return false;
 }
 
+//确认登录
 void Login::on_ConfirmButton_clicked()
 {
     if(isExistingAccount(ui->AccountLineEdit->text())){
@@ -100,6 +103,7 @@ void Login::on_ConfirmButton_clicked()
     }
 }
 
+//返回用户ID，用于后续用户相关操作
 QString AccountInfo(){
     return AccountInfomation;
 }

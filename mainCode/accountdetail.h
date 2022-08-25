@@ -40,6 +40,8 @@ private slots:
 
     void on_AddressEdit_editingFinished();
 
+    void on_PasswordEdit_editingFinished();
+
 private:
     Ui::AccountDetail *ui;
 };
