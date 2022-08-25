@@ -36,7 +36,7 @@ void PayPage::on_Cancel_clicked()
 void PayPage::on_Confirm_clicked()
 {
     if(VerificationCode == ui->VerifyCodeEdit->text().toInt()){
-        QMessageBox::information(this,tr("Payment"),tr("Payment Complete !"), QMessageBox::Yes);
+        QMessageBox::information(this,tr("Payment"),tr("Payment Complete !"), QMessageBox::Ok);
 
         OrderInfo *win = new OrderInfo;
         win->show();
@@ -44,7 +44,7 @@ void PayPage::on_Confirm_clicked()
     }
     else{
         ui->VerifyCodeEdit->clear();
-        QMessageBox::warning(this, tr("Warning"), tr("Verification Code Error !"), QMessageBox::Yes);
+        QMessageBox::warning(this, tr("Warning"), tr("Verification Code Error !"), QMessageBox::Ok);
     }
 
 

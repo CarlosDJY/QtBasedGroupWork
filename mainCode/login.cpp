@@ -9,6 +9,7 @@
 #include <qstring.h>
 
 QFile File1("Users.txt");
+QString AccountInfomation;
 
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
@@ -72,6 +73,7 @@ int isMappingPassword(QString Account, QString Password){
                  P=Arr.split(' ');
                  if(QString::compare(P[0],Account)==0&&QString::compare(P[1],Password)==0)
                  {
+                     AccountInfomation = P[0];
                      File1.close();
                      return true;
                  }
@@ -94,7 +96,10 @@ void Login::on_ConfirmButton_clicked()
         }
     }
     else{
-        QMessageBox::warning(this, tr("Warning"), tr("User name or Password error !"), QMessageBox::Yes);
+        QMessageBox::warning(this, tr("Warning"), tr("User name or Password error !"), QMessageBox::Ok);
     }
 }
 
+QString AccountInfo(){
+    return AccountInfomation;
+}
