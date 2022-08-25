@@ -24,7 +24,7 @@ private slots:
 
     void on_ProductButton_clicked();
 
-    void on_pushButton_clicked();
+    void on_CartButton_clicked();
 
 private:
     Ui::MainWindow2 *ui;

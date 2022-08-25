@@ -3,6 +3,7 @@
 #include "register.h"
 #include "ui_mainwindow.h"
 
+//主界面，下属注册与登录两个分支
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -16,7 +17,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
+//进入登录界面
 void MainWindow::on_LoginButton_clicked()
 {
     Login *win = new Login;
@@ -24,6 +25,7 @@ void MainWindow::on_LoginButton_clicked()
     this->close();
 }
 
+//进入注册界面
 void MainWindow::on_RegisterButton_clicked()
 {
     Register *win = new Register;
