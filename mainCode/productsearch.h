@@ -6,7 +6,7 @@
 #include <QMessageBox>
 #include <QButtonGroup>
 #include <time.h>
-struct Good
+struct Good//在内存中用于保存商品的结构体
 {
     QString Name;
     float SellPrice;
@@ -39,6 +39,8 @@ private slots:
     void on_checkBox_stateChanged(int arg1);
 
     void on_tableView_objectNameChanged(const QString &objectName);
+
+    void on_tableView_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::ProductSearch *ui;
