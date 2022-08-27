@@ -9,6 +9,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDirIterator>
+#include <QTextStream>
 #include <QStandardItemModel>
 
 extern QString AccountInfomation;
@@ -16,6 +17,7 @@ double NumToPay;
 
 QString filters;
 QStringList BelongedCartList;
+QStringList BelongedOrderList;
 int countCart;
 int currCart;
 
@@ -31,7 +33,7 @@ ShoppingCart::ShoppingCart(QWidget *parent) :
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
 }
 
-//购物车，包含该账号计划购买的全部物品，可以选择一键购买、部分购买、部分删除
+//购物车，包含该账号计划购买的全部物品，可以选择一键购买、一键清空
 ShoppingCart::~ShoppingCart()
 {
     delete ui;
@@ -96,6 +98,22 @@ void ShoppingCart::on_BuyAll_clicked()
     NumToPay = Price;
     qDebug() << NumToPay;
 
+    //商店ID需要
+    CartInit.open(QIODevice::ReadOnly);
+    CartGoods = CartInit.readAll();
+    filters = AccountInfomation + " order" + "*.txt";
+    BelongedOrderList = FindFile("D:\\DataFiles\\C++\\GW_testClone\\QtBasedGroupWork", filters);
+    QFile OrderInit(BelongedOrderList[0]);
+
+    QDateTime current_date_time =QDateTime::currentDateTime();
+    QString current_date =current_date_time.toString("yyyy.MM.dd,hh:mm:ss");
+
+    OrderInit.open(QIODevice::ReadWrite | QIODevice::Append);
+    QTextStream in(&OrderInit);
+    in << "\n" << AccountInfomation << " " << current_date << " " << NumToPay << Qt::endl;
+    in << CartGoods <<Qt::endl;
+    OrderInit.close();
+
     PayPage *win = new PayPage;
     win->show();
     this->close();
@@ -146,7 +164,7 @@ void ShoppingCart::on_NextPage_clicked()
 
 void ShoppingCart::on_FindCart_clicked()
 {
-    filters = AccountInfomation + "*.txt";
+    filters = AccountInfomation + " cart" + "*.txt";
     BelongedCartList = FindFile("D:\\DataFiles\\C++\\GW_testClone\\QtBasedGroupWork", filters);
     currCart = 0;
     countCart = BelongedCartList.length();
@@ -224,6 +242,50 @@ void ShoppingCart::on_PrevPage_clicked()
     }
     else{
         QMessageBox::warning(this, tr("Warning"), tr("First Cart Reached !"), QMessageBox::Ok);
+    }
+}
+
+
+void ShoppingCart::on_DeleteAll_clicked()
+{
+    QFile CartInit(BelongedCartList[currCart]);
+    CartInit.remove();
+
+    filters = AccountInfomation + "*.txt";
+    BelongedCartList = FindFile("D:\\DataFiles\\C++\\GW_testClone\\QtBasedGroupWork", filters);
+    currCart = 0;
+    countCart = BelongedCartList.length();
+    qDebug() << BelongedCartList;
+    qDebug() << countCart;
+    CartInit.open(QIODevice::ReadOnly);
+    QString CartGoods = CartInit.readAll();
+    QStringList DivCartGoods = CartGoods.split("\r\n");
+    qDebug() << DivCartGoods;
+
+    QStandardItemModel* Cart = new QStandardItemModel(ui->tableView);
+    //设置列字段名
+    Cart->setColumnCount(4);
+    Cart->setHeaderData(0,Qt::Horizontal, "商品ID");
+    Cart->setHeaderData(1,Qt::Horizontal, "商品名称");
+    Cart->setHeaderData(2,Qt::Horizontal, "商品数目");
+    Cart->setHeaderData(3,Qt::Horizontal, "商品单价");
+
+    int count = 0;
+    while(count < DivCartGoods.length() - 1){
+        QStringList DivGoods = DivCartGoods[count].split(" ");
+        for(int itr = 0; itr < 4; itr++){
+            Cart->setItem(count, itr, new QStandardItem(DivGoods[itr]));
+        }
+        count++;
+    }
+    CartInit.close();
+
+    ui->tableView->setModel(Cart);
+    int i = 0;
+    while(i < 4){
+        ui->tableView->setColumnWidth(i,775/4-5);
+        ui->tableView->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Fixed);
+        i++;
     }
 }
 

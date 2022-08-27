@@ -46,6 +46,7 @@ int isExistingAccount(QString Q){
          QStringList P=Arr.split(' ');
          if(QString::compare(P[0],Q)==0)
             {
+                    qDebug() << "ID" << P[0];
                     File1.close();
                     return true;
             }
@@ -61,26 +62,21 @@ int isMappingPassword(QString Account, QString Password){
         File1.open(QIODevice::ReadOnly);
     }
     QString Arr;
+    QStringList P;
 
-    while(!File1.atEnd())
-    {
-         Arr=(QString)File1.readLine();
-         QStringList P=Arr.split(' ');
-         if(isExistingAccount(Account))
-         {
-             File1.open(QIODevice::ReadOnly);
-             while(!File1.atEnd()){
-                 Arr=(QString)File1.readLine();
-                 Arr.chop(1);
-                 P=Arr.split(' ');
-                 if(QString::compare(P[0],Account)==0 && QString::compare(P[1],Password)==0)
-                 {
-                     AccountInfomation = P[0];
-                     File1.close();
-                     return true;
-                 }
-             }
-         }
+    while(!File1.atEnd()){
+        Arr=(QString)File1.readLine();
+        Arr.chop(1);
+        P=Arr.split(' ');
+        if(P.length()>1){
+            if(QString::compare(P[0],Account)==0 && QString::compare(P[1],Password)==0)
+            {
+                qDebug() << "PW" << P[1];
+                AccountInfomation = P[0];
+                File1.close();
+                return true;
+            }
+        }
     }
     File1.close();
     return false;

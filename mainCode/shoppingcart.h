@@ -29,6 +29,8 @@ private slots:
 
     void on_PrevPage_clicked();
 
+    void on_DeleteAll_clicked();
+
 private:
     Ui::ShoppingCart *ui;
 };
