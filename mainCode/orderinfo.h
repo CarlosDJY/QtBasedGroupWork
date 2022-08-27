@@ -20,6 +20,8 @@ public:
 private slots:
     void on_BackButton_clicked();
 
+    void on_FindOrder_clicked();
+
 private:
     Ui::OrderInfo *ui;
 };

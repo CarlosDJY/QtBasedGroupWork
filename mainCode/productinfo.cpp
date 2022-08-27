@@ -1,5 +1,6 @@
 #include "productinfo.h"
 #include "ui_productinfo.h"
+#include "shoppingcart.h"
 
 ProductInfo::ProductInfo(QWidget *parent) :
     QMainWindow(parent),
@@ -13,3 +14,9 @@ ProductInfo::~ProductInfo()
 {
     delete ui;
 }
+
+void ProductInfo::on_AddToCart_clicked()
+{
+    ui->ProductID->text()
+}
+

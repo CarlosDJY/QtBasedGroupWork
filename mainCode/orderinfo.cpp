@@ -1,9 +1,24 @@
 #include "orderinfo.h"
 #include "mainwindow2.h"
 #include "ui_orderinfo.h"
+#include <QDebug>
+#include <QFile>
+#include <QFileInfo>
+#include <QMainWindow>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QDirIterator>
+#include <QTextStream>
+#include <QStandardItemModel>
 #include <QTableWidget>
 #include <QHeaderView>
-#include <QStandardItemModel>
+
+QString filtersO;
+extern QString AccountInfomation;
+QStringList BelongedOrderTxt;
+QStringList BelongedOrders;
+int countOrder;
+int currOrder;
 
 OrderInfo::OrderInfo(QWidget *parent) :
     QMainWindow(parent),
@@ -12,24 +27,6 @@ OrderInfo::OrderInfo(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("网上超市系统");
 
-    //订单编号、购物日期、所购商品（编号、名称、数量、单价）、购物总价格等
-    QStandardItemModel* model = new QStandardItemModel();
-    model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("订单编号")));
-    model->setHorizontalHeaderItem(1, new QStandardItem(QObject::tr("购物日期")));
-    model->setHorizontalHeaderItem(2, new QStandardItem(QObject::tr("所购商品")));
-    model->setHorizontalHeaderItem(3, new QStandardItem(QObject::tr("购物总价格")));
-    model->setHorizontalHeaderItem(4, new QStandardItem(QObject::tr("订单状态")));
-    ui->OrderTable->setModel(model);
-    ui->OrderTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->OrderTable->setSelectionBehavior(QAbstractItemView::SelectRows);
-
-    int i = 0;
-    while(i < 5){
-        ui->OrderTable->setColumnWidth(i,775/5-1);
-        ui->OrderTable->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Fixed);
-        i+=1;
-    }
-
 }
 
 OrderInfo::~OrderInfo()
@@ -37,10 +34,92 @@ OrderInfo::~OrderInfo()
     delete ui;
 }
 
+QStringList FindFileO(const QString &strFilePath, const QString &strNameFilters)
+{
+    if (strFilePath.isEmpty() || strNameFilters.isEmpty())
+    {
+     return QStringList();
+    }
+
+    QDir dir;
+    QStringList filters;
+    QStringList FindFiles;
+
+    filters << strNameFilters;
+    dir.setPath(strFilePath);
+    qDebug() << dir.path();
+    dir.setNameFilters(filters);
+    qDebug() << dir.nameFilters();
+
+    QDirIterator iter(dir, QDirIterator::Subdirectories);
+
+    while (iter.hasNext())
+    {
+        iter.next();
+        QFileInfo info=iter.fileInfo();
+        if (info.isFile()){
+            FindFiles << info.absoluteFilePath().replace('/', '\\');
+        }
+    }
+    return FindFiles;
+}
+
+
+
 void OrderInfo::on_BackButton_clicked()
 {
     MainWindow2 *win = new MainWindow2;
     win->show();
     this->close();
+}
+
+
+void OrderInfo::on_FindOrder_clicked()
+{
+    filtersO = AccountInfomation + " order" + "*.txt";
+    BelongedOrderTxt = FindFileO("D:\\DataFiles\\C++\\GW_testClone\\QtBasedGroupWork", filtersO);
+
+    QString OrderAddress = BelongedOrderTxt[0];
+    QFile Orders(OrderAddress);
+    Orders.open(QIODevice::ReadOnly);
+    QString tempList = Orders.readAll();
+    BelongedOrders = tempList.split("\r\n\n\n");
+    currOrder = 0;
+    countOrder = BelongedOrders.length();
+    qDebug() << BelongedOrders;
+    qDebug() << countOrder;
+
+    BelongedOrders[currOrder].replace("\r\n","\n");
+    QStringList OrderInfo = BelongedOrders[currOrder].split("\n",Qt::SkipEmptyParts);
+    qDebug() << "OrderInfo" << OrderInfo;
+
+    ui->OrderTime->setText(OrderInfo[0].split(" ")[1]);
+    ui->TotalValue->setText(OrderInfo[0].split(" ")[2]);
+
+    QStandardItemModel* Order = new QStandardItemModel(ui->OrderTable);
+    //设置列字段名
+    Order->setColumnCount(4);
+    Order->setHeaderData(0,Qt::Horizontal, "商品ID");
+    Order->setHeaderData(1,Qt::Horizontal, "商品名称");
+    Order->setHeaderData(2,Qt::Horizontal, "商品数目");
+    Order->setHeaderData(3,Qt::Horizontal, "商品单价");
+
+    int count = 1;
+    while(count < OrderInfo.length()){
+        QStringList DivOrder = OrderInfo[count].split(" ");
+        for(int itr = 0; itr < 4; itr++){
+            Order->setItem(count-1, itr, new QStandardItem(DivOrder[itr]));
+        }
+        count++;
+    }
+    Orders.close();
+
+    ui->OrderTable->setModel(Order);
+    int i = 0;
+    while(i < 4){
+        ui->OrderTable->setColumnWidth(i,775/4-10);
+        ui->OrderTable->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Fixed);
+        i++;
+    }
 }
 

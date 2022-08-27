@@ -1,6 +1,7 @@
 #include "productsearch.h"
 #include "mainwindow2.h"
 #include "ui_productsearch.h"
+#include "productinfo.h"
 #include <QFile>
 #include "productsearch.h"
 #include <time.h>
@@ -12,6 +13,7 @@
 #include <QObject>
 Good ExistGoods[100];//从文件中读取所有内容存入内存中，保存在此结构体数组中
 Good Tmp[100];//用于筛选过程的临时结构体数组
+QStandardItemModel* model;
 void Test()//测试函数,用于在未完成编程时向文件内写入测试用例
 {
     QFile Q("Goods.txt");
@@ -172,15 +174,14 @@ void SortingByTheSaledAmount(int n)//按销量从高到低排序已筛选商品�
         }
     }
 }
-
 ProductSearch::ProductSearch(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ProductSearch)
 {
     ui->setupUi(this);
     this->setWindowTitle("网上超市系统");
-
 }
+
 ProductSearch::~ProductSearch()
 {
     delete ui;
@@ -201,7 +202,7 @@ void ProductSearch::on_pushButton_3_clicked()
     QString ShopName=ui->lineEdit_2->text();
     /*对输出筛选结果的表格进行初始化*/
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    QStandardItemModel* model = new QStandardItemModel(this);
+    model = new QStandardItemModel(this);
     QStringList labels = QObject::tr("名称,售价,折扣,超市名称,库存,折扣结束时间,折扣开始时间").simplified().split(",");
     model->setHorizontalHeaderLabels(labels);
     ui->tableView->setStyleSheet("QTableView { border: none;"
@@ -298,11 +299,14 @@ void ProductSearch::on_pushButton_3_clicked()
 
     }
 }
-/*当用户双击某一商品时，转到该商品的信息页*///未完成
-void ProductSearch::on_tableView_doubleClicked(const QModelIndex &index)
+void ProductSearch::on_tableView_doubleClicked(const QModelIndex &index)//未完成
 {
-    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    QModelIndex record = ui->tableView->currentIndex();
-    qDebug()<<record.data();
+    qDebug()<<"rua";
+    ProductInfo *win=new ProductInfo();
+    win->show();
+    this->close();
 }
+
+
+
 

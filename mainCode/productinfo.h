@@ -18,6 +18,9 @@ public:
     explicit ProductInfo(QWidget *parent = nullptr);
     ~ProductInfo();
 
+private slots:
+    void on_AddToCart_clicked();
+
 private:
     Ui::ProductInfo *ui;
 };
