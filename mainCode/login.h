@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QProcess>
 #include <QMessageBox>
+extern QString AccountInfomation;
 namespace Ui {
 class Login;
 }
