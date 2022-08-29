@@ -8,17 +8,28 @@
 #include <string>
 using namespace std;
 QString AdminPw = "123";
-
+int test;
 //将用户名与密码写入文件
 void WriteToFile(QString UserName,QString Password)
 {
     QFile Q("Users.txt");
     Q.open(QIODevice::Append);
-    QString Arr=UserName+' '+Password+'\n';
-    std::string s=Arr.toStdString();
-    const char* res=s.c_str();
-    Q.write(res);
-    Q.close();
+    if(test==false){
+        QString Arr=UserName+' '+Password+' '+'0'+'\n';
+        std::string s=Arr.toStdString();
+        const char* res=s.c_str();
+        Q.write(res);
+        Q.close();
+    }
+    else
+    {
+        QString Arr=UserName+' '+Password+' '+'1'+'\n';
+        std::string s=Arr.toStdString();
+        const char* res=s.c_str();
+        Q.write(res);
+        Q.close();
+
+    }
 }
 
 //注册界面，输入账号和密码，输入管理员密码以注册管理员帐号
@@ -103,6 +114,7 @@ void Register::on_ConfirmButton_clicked()
 
                 //管理员注册
                 if(ui->AdminPasswordLineEdit->text()==AdminPw){
+                    test=1;
                     MainWindow *win = new MainWindow;
                     win->show();
                     this->close();

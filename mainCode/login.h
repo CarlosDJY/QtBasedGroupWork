@@ -5,6 +5,7 @@
 #include <QProcess>
 #include <QMessageBox>
 extern QString AccountInfomation;
+extern int IsAdmin;
 namespace Ui {
 class Login;
 }
