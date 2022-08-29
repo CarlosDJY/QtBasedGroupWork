@@ -91,9 +91,17 @@ void Login::on_ConfirmButton_clicked()
         QString AccountTmp = ui->AccountLineEdit->text();
         if(isMappingPassword(AccountTmp, ui->PasswordLineEdit->text()))
         {
-            MainWindow2 *win = new MainWindow2;
-            win->show();
-            this->close();
+            IsAdmin = 0;
+            if(IsAdmin){
+                //MainWindow2Admin *win = new MainWindow2Admin;
+                //win->show();
+                //this->close();
+            }
+            else{
+                MainWindow2 *win = new MainWindow2;
+                win->show();
+                this->close();
+            }
         }
     }
     else{

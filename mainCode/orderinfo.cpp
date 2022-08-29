@@ -93,13 +93,8 @@ void OrderInfo::on_FindOrder_clicked()
     QStringList OrderInfo = BelongedOrders[currOrder].split("\n",Qt::SkipEmptyParts);
     qDebug() << "OrderInfo" << OrderInfo;
 
-<<<<<<< HEAD
-    ui->OrderTime->setText(OrderInfo[0].split(" ")[1]);
-    ui->TotalValue->setText(OrderInfo[0].split(" ")[2]);
-=======
     //ui->OrderTime->setText(OrderInfo[0].split(" ")[1]);
     //ui->TotalValue->setText(OrderInfo[0].split(" ")[2]);
->>>>>>> 336cc17b2a893335af0dec198badf1ed61a4e268
 
     QStandardItemModel* Order = new QStandardItemModel(ui->OrderTable);
     //设置列字段名
