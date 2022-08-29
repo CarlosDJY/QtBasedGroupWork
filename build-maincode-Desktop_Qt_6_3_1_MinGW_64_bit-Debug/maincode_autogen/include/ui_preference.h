@@ -65,6 +65,7 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setVerticalSpacing(30);
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout_2->addItem(verticalSpacer, 0, 0, 1, 1);
@@ -184,8 +185,8 @@ public:
 
         BackButton = new QPushButton(centralwidget);
         BackButton->setObjectName(QString::fromUtf8("BackButton"));
-        BackButton->setMinimumSize(QSize(100, 60));
-        BackButton->setMaximumSize(QSize(100, 60));
+        BackButton->setMinimumSize(QSize(100, 40));
+        BackButton->setMaximumSize(QSize(100, 40));
 
         horizontalLayout->addWidget(BackButton);
 

@@ -6,7 +6,7 @@
 #include <QMessageBox>
 #include <QButtonGroup>
 #include <time.h>
-struct Good
+struct Good//在内存中用于保存商品的结构体
 {
     QString Name;
     float SellPrice;
@@ -15,8 +15,8 @@ struct Good
     QString Shop;
     QString ID;
     int Storage;
-    time_t EndTime;
-    time_t StartTime;
+    struct tm EndTime;
+    struct tm StartTime;
 };
 typedef struct Good Good;
 namespace Ui {
@@ -33,6 +33,20 @@ public:
 
 private slots:
     void on_BackButton_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_checkBox_stateChanged(int arg1);
+
+    void DoubleClick_on_TableView(const QModelIndex &index);
+
+    void on_tableView_doubleClicked(const QModelIndex &index);
+
+    void on_tableView_clicked(const QModelIndex &index);
+
+    void on_ComfirmingButtom_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::ProductSearch *ui;

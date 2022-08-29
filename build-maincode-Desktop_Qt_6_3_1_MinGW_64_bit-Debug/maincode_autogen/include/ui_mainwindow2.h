@@ -34,7 +34,7 @@ public:
     QPushButton *AccountButton;
     QPushButton *OrderButton;
     QPushButton *ProductButton;
-    QPushButton *pushButton;
+    QPushButton *CartButton;
     QSpacerItem *verticalSpacer_2;
     QFrame *line;
     QSpacerItem *horizontalSpacer;
@@ -89,11 +89,11 @@ public:
 
         verticalLayout->addWidget(ProductButton);
 
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setMinimumSize(QSize(0, 40));
+        CartButton = new QPushButton(centralwidget);
+        CartButton->setObjectName(QString::fromUtf8("CartButton"));
+        CartButton->setMinimumSize(QSize(0, 40));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(CartButton);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -119,7 +119,7 @@ public:
         MainWindow2->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow2);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 800, 22));
         MainWindow2->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow2);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -136,7 +136,7 @@ public:
         AccountButton->setText(QCoreApplication::translate("MainWindow2", "\350\264\246\345\217\267\347\256\241\347\220\206", nullptr));
         OrderButton->setText(QCoreApplication::translate("MainWindow2", "\350\256\242\345\215\225\347\256\241\347\220\206", nullptr));
         ProductButton->setText(QCoreApplication::translate("MainWindow2", "\345\225\206\345\223\201\346\237\245\350\257\242", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow2", "\350\264\255\347\211\251\350\275\246", nullptr));
+        CartButton->setText(QCoreApplication::translate("MainWindow2", "\350\264\255\347\211\251\350\275\246", nullptr));
     } // retranslateUi
 
 };

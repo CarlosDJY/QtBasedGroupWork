@@ -20,6 +20,7 @@ public:
     explicit AccountDetail(QWidget *parent = nullptr);
     ~AccountDetail();
 
+
 private slots:
 
     void on_ReturnButton_clicked();
@@ -41,6 +42,7 @@ private slots:
     void on_AddressEdit_editingFinished();
 
     void on_PasswordEdit_editingFinished();
+
 
 private:
     Ui::AccountDetail *ui;

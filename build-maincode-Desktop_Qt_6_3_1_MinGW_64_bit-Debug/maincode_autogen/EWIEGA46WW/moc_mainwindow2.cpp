@@ -34,12 +34,12 @@ QT_MOC_LITERAL(12, 24), // "on_AccountButton_clicked"
 QT_MOC_LITERAL(37, 0), // ""
 QT_MOC_LITERAL(38, 22), // "on_OrderButton_clicked"
 QT_MOC_LITERAL(61, 24), // "on_ProductButton_clicked"
-QT_MOC_LITERAL(86, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(86, 21) // "on_CartButton_clicked"
 
     },
     "MainWindow2\0on_AccountButton_clicked\0"
     "\0on_OrderButton_clicked\0"
-    "on_ProductButton_clicked\0on_pushButton_clicked"
+    "on_ProductButton_clicked\0on_CartButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -80,7 +80,7 @@ void MainWindow2::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 0: _t->on_AccountButton_clicked(); break;
         case 1: _t->on_OrderButton_clicked(); break;
         case 2: _t->on_ProductButton_clicked(); break;
-        case 3: _t->on_pushButton_clicked(); break;
+        case 3: _t->on_CartButton_clicked(); break;
         default: ;
         }
     }
