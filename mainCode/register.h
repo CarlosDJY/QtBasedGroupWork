@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QProcess>
 #include <QMessageBox>
-
 namespace Ui {
 class Register;
 }

@@ -7,10 +7,11 @@
 #include <stdio.h>
 #include <QFile>
 #include <qstring.h>
+#include "register.h"
 
 QFile File1("Users.txt");
 QString AccountInfomation;
-
+int IsAdmin;
 //登录模块
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
@@ -73,6 +74,7 @@ int isMappingPassword(QString Account, QString Password){
             {
                 qDebug() << "PW" << P[1];
                 AccountInfomation = P[0];
+                IsAdmin=P[2].toInt();
                 File1.close();
                 return true;
             }
