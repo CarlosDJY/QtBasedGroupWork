@@ -171,6 +171,7 @@ void AccountDetail::on_SaveButton_clicked()
         {
             int i = 0;
             while(i < Ac.length()){
+                Ac[i].remove(" ");
                 if(QString::compare(Ac[i].at(Ac[i].size() - 1),"\n")==0){
                     Ac[i].chop(1);
                 }
@@ -178,7 +179,8 @@ void AccountDetail::on_SaveButton_clicked()
             }
             //合并全部信息
             QString AcInfo = Ac.join(" ");
-            AcInfo=AcInfo+" "+QString::number(IsAdmin);
+            AcInfo.chop(1);
+            AcInfo=AcInfo + QString::number(IsAdmin) + "\n";
             qDebug() << AcInfo;
 
             //取代原先的信息行
