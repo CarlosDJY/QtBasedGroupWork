@@ -92,6 +92,7 @@ void ReplaceLineB(QString AccountID, QString Info){
     ArrRp=(QString)AccountB.readAll();
     QStringList P = ArrRp.split("\n");
 
+    //判断是否匹配对应账户
     while(true){
         ArrTag = P[count].split(" ");
         if(QString::compare(ArrTag[0],AccountID)==0){
@@ -99,6 +100,7 @@ void ReplaceLineB(QString AccountID, QString Info){
             P[count] = Info;
             AccountB.close();
 
+            //更改数据
             AccountB.open(QIODevice::ReadWrite | QIODevice::Truncate);
             QTextStream in(&AccountB);
             for (int i=0; i<P.size(); i++){
@@ -123,6 +125,7 @@ void Balance::on_BackButton_clicked()
         }
         i++;
     }
+    //两位小数的余额
     AcB[7] = QString::number(balance, 'f', 2);
     QString AcInfoB = AcB.join(" ");
     qDebug() << AcInfoB;

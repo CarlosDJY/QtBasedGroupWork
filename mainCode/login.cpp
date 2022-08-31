@@ -95,6 +95,9 @@ void Login::on_ConfirmButton_clicked()
                 win->show();
                 this->close();
         }
+        else{
+            QMessageBox::warning(this, tr("Warning"), tr("User name or Password error !"), QMessageBox::Ok);
+        }
     }
     else{
         QMessageBox::warning(this, tr("Warning"), tr("User name or Password error !"), QMessageBox::Ok);
