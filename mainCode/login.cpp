@@ -66,7 +66,7 @@ int isMappingPassword(QString Account, QString Password){
 
     while(!File1.atEnd()){
         Arr=(QString)File1.readLine();
-        Arr.chop(1);
+        Arr.remove("\n");
         P=Arr.split(' ');
         if(P.length()>1){
             if(QString::compare(P[0],Account)==0 && QString::compare(P[1],Password)==0)

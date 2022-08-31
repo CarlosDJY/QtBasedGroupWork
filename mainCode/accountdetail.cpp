@@ -179,9 +179,13 @@ void AccountDetail::on_SaveButton_clicked()
             }
             //合并全部信息
             QString AcInfo = Ac.join(" ");
-            AcInfo.chop(1);
-            AcInfo=AcInfo + QString::number(IsAdmin) + "\n";
-            qDebug() << AcInfo;
+            AcInfo.remove("/n");
+            if(Ac[Ac.length()-1] != QString("222")){
+                AcInfo.chop(1);
+            }
+            qDebug() << "AcInfo" << AcInfo;
+            AcInfo=AcInfo + " " + QString::number(IsAdmin) + "\n";
+            qDebug() <<  "AcInfo" << AcInfo;
 
             //取代原先的信息行
             ReplaceLine(AccountInfomation, AcInfo);
