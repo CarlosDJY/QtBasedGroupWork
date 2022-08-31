@@ -41,6 +41,7 @@ Register::Register(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("网上超市系统");
 
+    //限制输入框输入
     ui->AccountLineEdit->setMaxLength(10);
     ui->PasswordLineEdit->setMaxLength(10);
     ui->PasswordLineEdit->setEchoMode(QLineEdit::Password);

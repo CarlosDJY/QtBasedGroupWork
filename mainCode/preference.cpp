@@ -94,6 +94,7 @@ void ReplaceLineP(QString AccountID, QString Info){
     }
 }
 
+//偏好设置与修改
 void Preference::on_BackButton_clicked()
 {
     preference = 100 * PricePre + 10 * DiscountPre + SalesPre;

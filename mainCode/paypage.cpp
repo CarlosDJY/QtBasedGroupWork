@@ -95,7 +95,6 @@ void ReplaceLinePay(QString AccountID, QString Info){
 }
 
 //确认支付，如验证码正确则完成支付
-//缺少扣款部分
 void PayPage::on_Confirm_clicked()
 {
     if(balancePay >= price){
@@ -122,11 +121,13 @@ void PayPage::on_Confirm_clicked()
             win->show();
             this->hide();
         }
+        //验证码错误报错
         else{
             ui->VerifyCodeEdit->clear();
             QMessageBox::warning(this, tr("Warning"), tr("Verification Code Error !"), QMessageBox::Ok);
         }
     }
+    //余额不足报错
     else{
         QMessageBox::warning(this, tr("Warning"), tr("Not enough money !"), QMessageBox::Ok);
     }
