@@ -1,5 +1,5 @@
 #include "orderinfoadmin.h"
-#include "mainwindow2admin.h"
+#include "mainwindow2.h"
 #include "ui_orderinfoadmin.h"
 
 OrderInfoAdmin::OrderInfoAdmin(QWidget *parent) :
@@ -16,7 +16,7 @@ OrderInfoAdmin::~OrderInfoAdmin()
 
 void OrderInfoAdmin::on_BackButton_clicked()
 {
-    MainWindow2Admin *win = new MainWindow2Admin;
+    MainWindow2 *win = new MainWindow2;
     win->show();
     this->close();
 }

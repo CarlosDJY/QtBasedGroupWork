@@ -12,54 +12,12 @@
 #include <QModelIndex>
 #include <QObject>
 #include <QDateTime>
+extern QString AccountInfomation;
 Good ExistGoods[100];//从文件中读取所有内容存入内存中，保存在此结构体数组中
 Good Tmp[100];//用于筛选过程的临时结构体数组
 QStandardItemModel* model;
 int Set;//用于确定查询按钮是否按下的变量，0为未按下，1为已按下
 int flag;//用于确定通过所有筛选器的数据数量
-std::string DatetimeToString(time_t time)
-{
-    tm *tm_ = localtime(&time);                // 将time_t格式转换为tm结构体
-    int year, month, day, hour, minute, second;// 定义时间的各个int临时变量。
-    year = tm_->tm_year + 1900;                // 临时变量，年，由于tm结构体存储的是从1900年开始的时间，所以临时变量int为tm_year加上1900。
-    month = tm_->tm_mon + 1;                   // 临时变量，月，由于tm结构体的月份存储范围为0-11，所以临时变量int为tm_mon加上1。
-    day = tm_->tm_mday;                        // 临时变量，日。
-    hour = tm_->tm_hour;                       // 临时变量，时。
-    minute = tm_->tm_min;                      // 临时变量，分。
-    second = tm_->tm_sec;                      // 临时变量，秒。
-    char yearStr[5], monthStr[3], dayStr[3], hourStr[3], minuteStr[3], secondStr[3];// 定义时间的各个char*变量。
-    sprintf(yearStr, "%d", year);              // 年。
-    sprintf(monthStr, "%d", month);            // 月。
-    sprintf(dayStr, "%d", day);                // 日。
-    sprintf(hourStr, "%d", hour);              // 时。
-    sprintf(minuteStr, "%d", minute);          // 分。
-    if (minuteStr[1] == '\0')                  // 如果分为一位，如5，则需要转换字符串为两位，如05。
-    {
-        minuteStr[2] = '\0';
-        minuteStr[1] = minuteStr[0];
-        minuteStr[0] = '0';
-    }
-    sprintf(secondStr, "%d", second);          // 秒。
-    if (secondStr[1] == '\0')                  // 如果秒为一位，如5，则需要转换字符串为两位，如05。
-    {
-        secondStr[2] = '\0';
-        secondStr[1] = secondStr[0];
-        secondStr[0] = '0';
-    }
-    char s[20];                                // 定义总日期时间char*变量。
-    sprintf(s, "%s-%s-%s %s:%s:%s", yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);// 将年月日时分秒合并。
-    std::string str(s);                             // 定义string变量，并将总日期时间char*变量作为构造函数的参数传入。
-    return str;                                // 返回转换日期时间后的string变量。
-}
-void Test()//测试函数,用于在未完成编程时向文件内写入测试用例
-{
-    QFile Q("Goods.txt");
-    Q.open(QIODevice::WriteOnly);
-    Q.write("国际学院本科毕业证 70000 1.0 1.0 北邮 AA0001 1  \n");
-    Q.write("伦敦玛丽女王大学学士学位证 70000 1.0 0.8 QMUL AA0002 1 121 10 01 12 00 119 9 01 12 00\n");
-    Q.write("《我在成都火车站捡了个彝族美女》 1.6 1.0 0.8 广西玉林高中 AA0003 1 121 10 01 12 00 119 9 01 12 00\n");
-    Q.close();
-}
 int WriteToMemory()//从文件中读取所有内容写入结构体数组中，返回商品总数
 {
         int i=0;
@@ -76,6 +34,8 @@ int WriteToMemory()//从文件中读取所有内容写入结构体数组中，�
             ExistGoods[i].Shop=P[4];
             ExistGoods[i].ID=P[5];
             ExistGoods[i].Storage=P[6].toInt();
+            int length=P.length();
+            ExistGoods[i].Sale=P[length-1].toInt();
             if(P[3].toFloat()==1.0){
                  i++;
 
@@ -188,9 +148,31 @@ void SortingBySellPrice(int n){//按售价从低到高排序已筛选商品，n�
         }
     }
 }
-float SearchForTheSaledAmount(Good G)//查询某商品的销量
+int SearchForTheSaledAmount(Good G)//查询某商品的销量
 {
-    return 0;//未完成
+    return G.Sale;
+}
+float SearchForTheGereralPrefenres(Good G)//查询用户User对商品的偏好指数
+{
+    QFile P("Users.txt");
+    P.open(QIODevice::ReadOnly);
+    QString Prefenres;
+    while(!P.atEnd())
+    {
+          QString line=(QString)P.readLine();
+          QStringList arr=line.split(" ");
+          if(QString::compare(arr[0],AccountInfomation)==0)
+          {
+              Prefenres=arr[8];
+              break;
+          }
+    }
+    QStringList Pr=Prefenres.split("");
+    int PricePre=Pr[0].toInt();
+    int DiscountPre=Pr[1].toInt();
+    int SellPre=Pr[2].toInt();
+    float pre=1/G.SellPrice*PricePre/(PricePre+DiscountPre+SellPre)+1/G.Discount*DiscountPre/(PricePre+DiscountPre+SellPre)+G.Sale*SellPre/(PricePre+DiscountPre+SellPre);
+    return pre;
 }
 void SortingByTheSaledAmount(int n)//按销量从高到低排序已筛选商品，n为符合筛选规则商品的数目
 {
@@ -203,6 +185,25 @@ void SortingByTheSaledAmount(int n)//按销量从高到低排序已筛选商品�
         for ( j = 0; j < n-1-i; j++)
         {
             if (SearchForTheSaledAmount(ExistGoods[j])<SearchForTheSaledAmount(ExistGoods[j+1]))
+            {
+                temp=ExistGoods[j];
+                ExistGoods[j]=ExistGoods[j+1];
+                ExistGoods[j+1]=temp;
+            }
+        }
+    }
+}
+void SortingByTheGeneralPrefenrence(int n)//按综合偏好从高到低排序已筛选商品，n为符合筛选规则商品的数目
+{
+    int i;
+    int j;
+    int a=0;
+    Good temp;
+    for ( i = 0; i < n-1; i++)
+    {
+        for ( j = 0; j < n-1-i; j++)
+        {
+            if (SearchForTheGereralPrefenres(ExistGoods[j])<SearchForTheGereralPrefenres(ExistGoods[j+1]))
             {
                 temp=ExistGoods[j];
                 ExistGoods[j]=ExistGoods[j+1];
@@ -229,14 +230,12 @@ ProductSearch::~ProductSearch()
 void ProductSearch::on_BackButton_clicked()
 {
     MainWindow2 *win = new MainWindow2;
-    Test();
     win->show();
     this->close();
 }
 
 void ProductSearch::on_pushButton_3_clicked()
 {
-    Test();//向文件中写入测试数据
     /*读取用户输入*/
     QString GoodName=ui->lineEdit->text();
     QString ShopName=ui->lineEdit_2->text();
@@ -271,6 +270,9 @@ void ProductSearch::on_pushButton_3_clicked()
         }
         switch(ui->comboBox->currentIndex())//依照用户的输入选择一种排序方式
         {
+            case 0:
+                SortingByTheGeneralPrefenrence(flag);
+                break;
             case 1:
                 SortingByTheSaledAmount(flag);
                 break;
@@ -301,6 +303,9 @@ void ProductSearch::on_pushButton_3_clicked()
         }
         switch (ui->comboBox->currentIndex())//依照用户的输入选择一种排序方式
         {
+        case 0:
+            SortingByTheGeneralPrefenrence(flag);
+            break;
         case 1:
             SortingByTheSaledAmount(flag);
             break;
@@ -352,7 +357,7 @@ void ProductSearch::on_ComfirmingButtom_clicked()
         Q.open(QIODevice::WriteOnly);
         if(ExistGoods[flag].Discount==1.0)
         {
-            QString Tmp=ExistGoods[flag].ID+" "+ExistGoods[flag].Name+" "+QString::number(ExistGoods[flag].SellPrice,'f',2)+" "+ExistGoods[flag].Shop+" "+QString::number(ExistGoods[flag].Discount,'f',2);
+            QString Tmp=ExistGoods[flag].ID+" "+ExistGoods[flag].Name+" "+QString::number(ExistGoods[flag].SellPrice,'f',2)+" "+ExistGoods[flag].Shop+" "+QString::number(ExistGoods[flag].Discount,'f',2)+" "+QString::number(ExistGoods[flag].Sale);
             std::string TEST=Tmp.toStdString();
             const char* data=TEST.c_str();
             Q.write(data);
@@ -362,7 +367,7 @@ void ProductSearch::on_ComfirmingButtom_clicked()
         {
             time_t ST=mktime(&ExistGoods[flag].StartTime);
             time_t ET=mktime(&ExistGoods[flag].EndTime);
-            QString Tmp=ExistGoods[flag].ID+" "+ExistGoods[flag].Name+" "+QString::number(ExistGoods[flag].SellPrice,'f',2)+" "+ExistGoods[flag].Shop+" "+QString::number(ExistGoods[flag].Discount,'f',2)+" "+QString::number(ST,10)+" "+QString::number(ET,10);
+            QString Tmp=ExistGoods[flag].ID+" "+ExistGoods[flag].Name+" "+QString::number(ExistGoods[flag].SellPrice,'f',2)+" "+ExistGoods[flag].Shop+" "+QString::number(ExistGoods[flag].Discount,'f',2)+" "+QString::number(ST,10)+" "+QString::number(ET,10)+" "+QString::number(ExistGoods[flag].Sale);
             std::string TEST=Tmp.toStdString();
             const char* data=TEST.c_str();
             Q.write(data);

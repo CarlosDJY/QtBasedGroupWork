@@ -113,6 +113,8 @@ void PayPage::on_Confirm_clicked()
             QString AcInfoPay = AcPay.join(" ");
             qDebug() << AcInfoPay;
             ReplaceLinePay(AccountInfomation, AcInfoPay);
+            QFile Good("Goods.txt");
+            Good.open(QIODevice::ReadWrite);
 
             QMessageBox::information(this,tr("Payment"),tr("Payment Complete !"), QMessageBox::Ok);
 

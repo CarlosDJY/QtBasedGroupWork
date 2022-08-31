@@ -83,7 +83,7 @@ void OrderInfo::on_FindOrder_clicked()
     QFile Orders(OrderAddress);
     Orders.open(QIODevice::ReadOnly);
     QString tempList = Orders.readAll();
-    BelongedOrders = tempList.split("\r\n\n\n");
+    BelongedOrders = tempList.split("\n\n\n");
     currOrder = 0;
     countOrder = BelongedOrders.length();
     qDebug() << BelongedOrders;
@@ -93,8 +93,8 @@ void OrderInfo::on_FindOrder_clicked()
     QStringList OrderInfo = BelongedOrders[currOrder].split("\n",Qt::SkipEmptyParts);
     qDebug() << "OrderInfo" << OrderInfo;
 
-    //ui->OrderTime->setText(OrderInfo[0].split(" ")[1]);
-    //ui->TotalValue->setText(OrderInfo[0].split(" ")[2]);
+    ui->OrderTime->setText(OrderInfo[0].split(" ")[1]);
+    ui->TotalValue->setText(OrderInfo[0].split(" ")[2]);
 
     QStandardItemModel* Order = new QStandardItemModel(ui->OrderTable);
     //设置列字段名

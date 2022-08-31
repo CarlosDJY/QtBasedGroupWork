@@ -8,7 +8,6 @@
 #include <QFile>
 #include <qstring.h>
 #include "register.h"
-
 QFile File1("Users.txt");
 QString AccountInfomation;
 int IsAdmin;
@@ -74,7 +73,8 @@ int isMappingPassword(QString Account, QString Password){
             {
                 qDebug() << "PW" << P[1];
                 AccountInfomation = P[0];
-                IsAdmin=P[2].toInt();
+                int length=P.length();
+                IsAdmin=P[length-1].toInt();
                 File1.close();
                 return true;
             }
@@ -91,17 +91,9 @@ void Login::on_ConfirmButton_clicked()
         QString AccountTmp = ui->AccountLineEdit->text();
         if(isMappingPassword(AccountTmp, ui->PasswordLineEdit->text()))
         {
-            IsAdmin = 0;
-            if(IsAdmin){
-                //MainWindow2Admin *win = new MainWindow2Admin;
-                //win->show();
-                //this->close();
-            }
-            else{
-                MainWindow2 *win = new MainWindow2;
+                MainWindow2 *win=new MainWindow2;
                 win->show();
                 this->close();
-            }
         }
     }
     else{

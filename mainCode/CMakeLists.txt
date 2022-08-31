@@ -75,6 +75,21 @@ set(PROJECT_SOURCES
         productinfo.cpp
         productinfo.ui
 
+        accountcontroladmin.h
+        accountcontroladmin.cpp
+        accountcontroladmin.ui
+
+        orderinfoadmin.h
+        orderinfoadmin.cpp
+        orderinfoadmin.ui
+
+        productsearchadmin.h
+        productsearchadmin.cpp
+        productsearchadmin.ui
+
+        addproduct.h
+        addproduct.cpp
+        addproduct.ui
         ${TS_FILES}
 )
 

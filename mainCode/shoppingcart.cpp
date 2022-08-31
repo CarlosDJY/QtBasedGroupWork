@@ -11,7 +11,7 @@
 #include <QDirIterator>
 #include <QTextStream>
 #include <QStandardItemModel>
-
+#include "productinfo.h"
 extern QString AccountInfomation;
 double NumToPay;
 
@@ -87,9 +87,9 @@ void ShoppingCart::on_BuyAll_clicked()
     QFile CartInit(BelongedCartList[currCart]);
     CartInit.open(QIODevice::ReadOnly);
     QString CartGoods = CartInit.readAll();
-    QStringList DivCartGoods = CartGoods.split("\r\n");
+    QStringList DivCartGoods = CartGoods.split("\n");
     int count = 0;
-    while(count < DivCartGoods.length() - 1){
+    while(count < DivCartGoods.length() - 1 && DivCartGoods[count].contains(" ")){
         QStringList DivGoods = DivCartGoods[count].split(" ");
         Price += DivGoods[2].toDouble() * DivGoods[3].toDouble();
         count++;
@@ -99,16 +99,28 @@ void ShoppingCart::on_BuyAll_clicked()
     qDebug() << NumToPay;
 
     //商店ID需要
+    //还是这个问题啊
+    //这里没有新建order文件
+    //所以写好这个创建就行了
+    QString S=CartInit.fileName();
+    QStringList p=S.split(" ");
+    QString ShopName=p[2];
+    QString P=AccountInfomation+" "+"order"+" "+ShopName;
+    QFile Q(P);
+    Q.open(QIODevice::ReadWrite|QIODevice::Text);
+    Q.close();
     CartInit.open(QIODevice::ReadOnly);
     CartGoods = CartInit.readAll();
     filters = AccountInfomation + " order" + "*.txt";
     BelongedOrderList = FindFile("D:\\DataFiles\\C++\\GW_testClone\\QtBasedGroupWork", filters);
+    qDebug() << "BOL" <<BelongedOrderList;
     QFile OrderInit(BelongedOrderList[0]);
+
 
     QDateTime current_date_time =QDateTime::currentDateTime();
     QString current_date =current_date_time.toString("yyyy.MM.dd,hh:mm:ss");
 
-    OrderInit.open(QIODevice::ReadWrite | QIODevice::Append);
+    OrderInit.open(QIODevice::WriteOnly | QIODevice::Append);
     QTextStream in(&OrderInit);
     in << "\n" << AccountInfomation << " " << current_date << " " << NumToPay << Qt::endl;
     in << CartGoods <<Qt::endl;
@@ -127,7 +139,7 @@ void ShoppingCart::on_NextPage_clicked()
         QFile CartInit(BelongedCartList[currCart]);
         CartInit.open(QIODevice::ReadOnly);
         QString CartGoods = CartInit.readAll();
-        QStringList DivCartGoods = CartGoods.split("\r\n");
+        QStringList DivCartGoods = CartGoods.split("\n");
         qDebug() << DivCartGoods;
 
         QStandardItemModel* Cart = new QStandardItemModel(ui->tableView);
@@ -139,7 +151,7 @@ void ShoppingCart::on_NextPage_clicked()
         Cart->setHeaderData(3,Qt::Horizontal, "商品单价");
 
         int count = 0;
-        while(count < DivCartGoods.length() - 1){
+        while(count < DivCartGoods.length() - 1 && DivCartGoods[count].contains(" ")){
             QStringList DivGoods = DivCartGoods[count].split(" ");
             for(int itr = 0; itr < 4; itr++){
                 Cart->setItem(count, itr, new QStandardItem(DivGoods[itr]));
@@ -173,7 +185,7 @@ void ShoppingCart::on_FindCart_clicked()
     QFile CartInit(BelongedCartList[currCart]);
     CartInit.open(QIODevice::ReadOnly);
     QString CartGoods = CartInit.readAll();
-    QStringList DivCartGoods = CartGoods.split("\r\n");
+    QStringList DivCartGoods = CartGoods.split("\n");
     qDebug() << DivCartGoods;
 
     QStandardItemModel* Cart = new QStandardItemModel(ui->tableView);
@@ -185,8 +197,9 @@ void ShoppingCart::on_FindCart_clicked()
     Cart->setHeaderData(3,Qt::Horizontal, "商品单价");
 
     int count = 0;
-    while(count < DivCartGoods.length() - 1){
+    while(count < DivCartGoods.length() - 1 && DivCartGoods[count].contains(" ")){
         QStringList DivGoods = DivCartGoods[count].split(" ");
+        qDebug()<< "DivGoods" <<DivGoods;
         for(int itr = 0; itr < 4; itr++){
             Cart->setItem(count, itr, new QStandardItem(DivGoods[itr]));
         }
@@ -211,7 +224,7 @@ void ShoppingCart::on_PrevPage_clicked()
         QFile CartInit(BelongedCartList[currCart]);
         CartInit.open(QIODevice::ReadOnly);
         QString CartGoods = CartInit.readAll();
-        QStringList DivCartGoods = CartGoods.split("\r\n");
+        QStringList DivCartGoods = CartGoods.split("\n");
         qDebug() << DivCartGoods;
 
         QStandardItemModel* Cart = new QStandardItemModel(ui->tableView);
@@ -223,7 +236,7 @@ void ShoppingCart::on_PrevPage_clicked()
         Cart->setHeaderData(3,Qt::Horizontal, "商品单价");
 
         int count = 0;
-        while(count < DivCartGoods.length() - 1){
+        while(count < DivCartGoods.length() - 1 && DivCartGoods[count].contains(" ")){
             QStringList DivGoods = DivCartGoods[count].split(" ");
             for(int itr = 0; itr < 4; itr++){
                 Cart->setItem(count, itr, new QStandardItem(DivGoods[itr]));
@@ -251,7 +264,7 @@ void ShoppingCart::on_DeleteAll_clicked()
     QFile CartInit(BelongedCartList[currCart]);
     CartInit.remove();
 
-    filters = AccountInfomation + "*.txt";
+    filters = AccountInfomation + " cart" +"*.txt";
     BelongedCartList = FindFile("D:\\DataFiles\\C++\\GW_testClone\\QtBasedGroupWork", filters);
     currCart = 0;
     countCart = BelongedCartList.length();
@@ -259,7 +272,7 @@ void ShoppingCart::on_DeleteAll_clicked()
     qDebug() << countCart;
     CartInit.open(QIODevice::ReadOnly);
     QString CartGoods = CartInit.readAll();
-    QStringList DivCartGoods = CartGoods.split("\r\n");
+    QStringList DivCartGoods = CartGoods.split("\n");
     qDebug() << DivCartGoods;
 
     QStandardItemModel* Cart = new QStandardItemModel(ui->tableView);
@@ -271,7 +284,7 @@ void ShoppingCart::on_DeleteAll_clicked()
     Cart->setHeaderData(3,Qt::Horizontal, "商品单价");
 
     int count = 0;
-    while(count < DivCartGoods.length() - 1){
+    while(count < DivCartGoods.length() - 1 && DivCartGoods[count].contains(" ")){
         QStringList DivGoods = DivCartGoods[count].split(" ");
         for(int itr = 0; itr < 4; itr++){
             Cart->setItem(count, itr, new QStandardItem(DivGoods[itr]));

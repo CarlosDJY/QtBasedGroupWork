@@ -5,7 +5,6 @@
 #include <QProcess>
 #include <QMessageBox>
 #include <QButtonGroup>
-
 namespace Ui {
 class ProductSearchAdmin;
 }
@@ -20,6 +19,10 @@ public:
 
 private slots:
     void on_BackButton_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_ComfirmingButtom_clicked();
 
 private:
     Ui::ProductSearchAdmin *ui;

@@ -1,8 +1,9 @@
 #include "accountdetail.h"
 #include "accountcontrol.h"
+#include "accountcontroladmin.h"
 #include "ui_accountdetail.h"
 #include <stdio.h>
-
+#include "login.h"
 #include <QLineEdit>
 #include <QFile>
 #include <QFileInfo>
@@ -25,7 +26,7 @@ using namespace std;
 extern QString AccountInfomation;
 int DetailReady = 0;
 int NeedEdit = 5;
-
+extern int IsAdmin;
 QFile Account("Users.txt");
 
 QString Arr;
@@ -47,7 +48,14 @@ AccountDetail::AccountDetail(QWidget *parent) :
     //密码和手机号限制长度
     ui->PasswordEdit->setMaxLength(10);
     ui->PhoneEdit->setMaxLength(11);
-
+    if(IsAdmin==1)
+    {
+        ui->AddressLabel->setText("超市名称");
+    }
+    if(IsAdmin==0)
+    {
+        ui->AddressLabel->setText("收货地址");
+    }
     Account.open(QIODevice::ReadOnly);
     //将对应的account数据行读入Ac中
     while(!Account.atEnd()){
@@ -69,6 +77,10 @@ AccountDetail::AccountDetail(QWidget *parent) :
     //性别暂未设置
     ui->IDEdit->setText(Ac[0]);
     ui->PasswordEdit->setText(Ac[1]);
+    if(Ac[2]=="1\n"||Ac[2]=="0\n")
+    {
+        Ac[2]="";
+    }
     ui->NameEdit->setText(Ac[2]);
     ui->MaleChoose->setChecked(Ac[3]=="1");
     ui->FemaleChoose->setChecked(Ac[3]=="2");
@@ -76,7 +88,6 @@ AccountDetail::AccountDetail(QWidget *parent) :
     ui->PhoneEdit->setText(Ac[4]);
     ui->MailEdit->setText(Ac[5]);
     ui->AddressEdit->setText(Ac[6]);
-
 }
 
 AccountDetail::~AccountDetail()
@@ -93,10 +104,19 @@ void AccountDetail::on_ReturnButton_clicked()
         QMessageBox::warning(this, tr("Warning"), tr("Save Edit First !"), QMessageBox::Ok);
     }
     else{
-        AccountControl *win = new AccountControl;
-        win->show();
-        this->hide();
-    }
+            if(IsAdmin==1)
+            {
+                AccountControlAdmin* win=new AccountControlAdmin;
+                win->show();
+                this->close();
+            }
+            else
+            {
+                AccountControl* win=new AccountControl;
+                win->show();
+                this->close();
+            }
+        }
 }
 
 
@@ -126,6 +146,7 @@ void AccountDetail::on_SaveButton_clicked()
             i++;
         }
         QString AcInfo = Ac.join(" ");
+        AcInfo=AcInfo+" "+QString::number(IsAdmin);
         qDebug() << AcInfo;
 
         ReplaceLine(AccountInfomation, AcInfo);

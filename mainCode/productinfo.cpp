@@ -7,6 +7,8 @@
 #include "login.h"
 #include <QFileInfo>
 extern QString AccountInfomation;
+extern int IsAdmin;
+QString ShopName;
 Shoppingcars Exist[100];
 ProductInfo::ProductInfo(QWidget *parent) :
     QMainWindow(parent),
@@ -14,28 +16,33 @@ ProductInfo::ProductInfo(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("网上超市系统");
+    if(IsAdmin==1)
+    {
+        ui->AddToCart->setEnabled(false);
+    }
     QFile Q("temp.txt");
     Q.open(QIODevice::ReadOnly);
     QString Tmp=(QString)Q.readLine();
     QStringList L=Tmp.split(' ');
+    int length=L.length();
+    ui->Sale->setText(L[length-1]);
     ui->ProductID->setText(L[0]);
     ui->ProductName->setText(L[1]);
     ui->Price->setText(L[2]);
     ui->SupermarketID->setText(L[3]);
-    float OriginalPrice=L[2].toFloat();
+    ShopName=L[3];
     float Discount=L[4].toFloat();
-    float DiscontPrice=Discount*OriginalPrice;
-    ui->DiscountPrice->setText(QString::number(DiscontPrice,'f',2));
+    ui->DiscountPrice->setText(QString::number(Discount,'f',2));
     if(Discount!=1.0)
     {
         const time_t StartTime_t=L[5].toInt();
         const time_t EndTime_t=L[6].toInt();
-        /*std::string StartTime=asctime(localtime(&StartTime_t));
-        std::string EndTime=asctime(localtime(&EndTime_t));*/
+
         struct tm StartTime_struct;
         struct tm EndTime_struct;
         localtime_s(&StartTime_struct,&StartTime_t);
         localtime_s(&EndTime_struct,&EndTime_t);
+        qDebug()<<EndTime_struct.tm_year+1900;
         QString ST=QString("%1:%2:%3:%4:%5").arg(StartTime_struct.tm_year+1900,4,10,QLatin1Char('0')).arg(StartTime_struct.tm_mon+1,2,10,QLatin1Char('0')).arg(StartTime_struct.tm_mday,2,10,QLatin1Char('0')).arg(StartTime_struct.tm_hour,2,10,QLatin1Char('0')).arg(StartTime_struct.tm_min,2,10,QLatin1Char('0'));
         QString ET=QString("%1:%2:%3:%4:%5").arg(EndTime_struct.tm_year+1900,4,10,QLatin1Char('0')).arg(EndTime_struct.tm_mon+1,2,10,QLatin1Char('0')).arg(EndTime_struct.tm_mday,2,10,QLatin1Char('0')).arg(EndTime_struct.tm_hour,2,10,QLatin1Char('0')).arg(EndTime_struct.tm_min,2,10,QLatin1Char('0'));
         ui->StartTime->setText(ST);
@@ -78,7 +85,7 @@ void ProductInfo::on_AddToCart_clicked()
    C.Num=ui->GoodsNumber->text().toInt();
    C.Name=ui->ProductName->text();
    C.SellPrice=ui->Price->text().toFloat();
-   QString FileName="["+AccountInfomation+"]"+"cart"+"[123]"+".txt";
+   QString FileName=AccountInfomation+" "+"cart"+" "+ui->SupermarketID->text()+".txt";
    std::string s=FileName.toStdString();
    const char* res=s.c_str();
    int n=SetToMemory();

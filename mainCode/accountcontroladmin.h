@@ -22,6 +22,9 @@ private slots:
 
     void on_BackButton_clicked();
 
+
+    void on_AddNewItem_clicked();
+
 private:
     Ui::AccountControlAdmin *ui;
 };

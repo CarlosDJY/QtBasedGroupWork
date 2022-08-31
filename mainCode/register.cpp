@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <string>
+#include <algorithm>
 using namespace std;
 QString AdminPw = "123";
 int test;
@@ -91,26 +92,22 @@ int isValidID(QString Q)
     int i=0;
     string STR=Q.toStdString();
     const char* arr=STR.c_str();
-    while (i<10)
+    if(STR.find_first_not_of("0123456789")==string::npos)
     {
-        if(std::isdigit(arr[i])==false)
-        {
-            return 1;
-        }
-        else
-        {
-            i++;
-        }
+        return 0;
     }
-    return 0;
+    else
+    {
+        return 1;
+    }
 }
 
 //确认注册
 void Register::on_ConfirmButton_clicked()
 {
     if(!isReusedAccount(ui->AccountLineEdit->text())){
-        if (isValidID(ui->AccountLineEdit->text())){
-            if (isValidID(ui->PasswordLineEdit->text())){
+        if (isValidID(ui->AccountLineEdit->text())==true){
+            if (isValidID(ui->PasswordLineEdit->text())==true){
 
                 //管理员注册
                 if(ui->AdminPasswordLineEdit->text()==AdminPw){
