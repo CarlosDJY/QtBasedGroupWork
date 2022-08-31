@@ -140,6 +140,7 @@ void AccountDetail::on_SaveButton_clicked()
         }
         int i = 0;
         while(i < Ac.length()-1){
+
             if(QString::compare(Ac[i].at(Ac[i].size() - 1),"\n")==0){
                 Ac[i].chop(1);
             }

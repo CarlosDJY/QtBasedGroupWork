@@ -18,10 +18,10 @@ extern double NumToPay;
 double price;
 
 extern QString AccountInfomation;
+extern QStringList BelongedOrderList;
 QFile AccountPay("Users.txt");
 QString ArrPay;
 QStringList AcPay;
-
 //支付页面，输入验证码以完成支付
 PayPage::PayPage(QWidget *parent) :
     QMainWindow(parent),
@@ -113,11 +113,36 @@ void PayPage::on_Confirm_clicked()
             QString AcInfoPay = AcPay.join(" ");
             qDebug() << AcInfoPay;
             ReplaceLinePay(AccountInfomation, AcInfoPay);
-            QFile Good("Goods.txt");
-            Good.open(QIODevice::ReadWrite);
-
             QMessageBox::information(this,tr("Payment"),tr("Payment Complete !"), QMessageBox::Ok);
-
+            /*QFile CurrentOrder(BelongedOrderList[0]);
+            CurrentOrder.open(QIODevice::ReadOnly);
+            QString Line;
+            QStringList temp;
+            int search=0;
+            Line=(QString)CurrentOrder.readAll();
+            temp=Line.split("\n");
+            while(true)
+            {
+                QString a=QString::number(price,'f',2);
+                QStringList Seperate=temp[search].split(" ");
+                if(QString::compare(Seperate[0],AccountInfomation)==0&&QString::compare(Seperate[3],a)==0)
+                {
+                        temp[search+1]=temp[search+1]+" "+"1";
+                        CurrentOrder.close();
+                        CurrentOrder.open(QIODevice::ReadWrite | QIODevice::Truncate);
+                        QTextStream in(&AccountPay);
+                        for (int i=0; i<Line.size(); i++)
+                        {
+                            in << Line[i] << "\n";
+                        }
+                        CurrentOrder.close();
+                        break;
+                }
+                else
+                {
+                    search++;
+                }
+            }*/
             OrderInfo *win = new OrderInfo;
             win->show();
             this->hide();

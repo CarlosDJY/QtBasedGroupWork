@@ -125,7 +125,14 @@ void ShoppingCart::on_BuyAll_clicked()
     in << "\n" << AccountInfomation << " " << current_date << " " << NumToPay << Qt::endl;
     in << CartGoods <<Qt::endl;
     OrderInit.close();
-
+    QStringList OrderSep=BelongedOrderList[0].split(" ");
+    QStringList Tmp=OrderSep[2].split(".txt");
+    QString FileName=Tmp[0]+" "+"order.txt";
+    QFile F(FileName);
+    F.open(QIODevice::Append);
+    QTextStream on(&F);
+    on << "\n" << AccountInfomation << " " << current_date << " " << NumToPay << Qt::endl;
+    on << CartGoods <<Qt::endl;
     PayPage *win = new PayPage;
     win->show();
     this->close();
