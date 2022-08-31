@@ -467,41 +467,15 @@ QScrollBar::right-arrow:horizontal {
         </property>
        </spacer>
       </item>
-      <item row="1" column="2">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="1">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item row="1" column="1">
        <layout class="QGridLayout" name="gridLayout">
         <property name="horizontalSpacing">
-         <number>20</number>
+         <number>10</number>
         </property>
         <property name="verticalSpacing">
-         <number>15</number>
+         <number>12</number>
         </property>
-        <item row="0" column="0">
+        <item row="0" column="0" rowspan="2">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -557,13 +531,17 @@ QScrollBar::right-arrow:horizontal {
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;销售价格&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_3">
-            <property name="spacing">
-             <number>20</number>
-            </property>
             <item>
              <widget class="QLineEdit" name="Sale"/>
             </item>
@@ -575,6 +553,9 @@ QScrollBar::right-arrow:horizontal {
             </item>
             <item>
              <widget class="QLineEdit" name="StartTime"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="ProductID_2"/>
             </item>
            </layout>
           </item>
@@ -671,6 +652,12 @@ QScrollBar::right-arrow:horizontal {
             <property name="spacing">
              <number>20</number>
             </property>
+            <property name="topMargin">
+             <number>15</number>
+            </property>
+            <property name="bottomMargin">
+             <number>15</number>
+            </property>
             <item>
              <widget class="QLineEdit" name="ProductName"/>
             </item>
@@ -687,7 +674,20 @@ QScrollBar::right-arrow:horizontal {
           </item>
          </layout>
         </item>
-        <item row="1" column="0" colspan="3">
+        <item row="1" column="2">
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>30</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0" colspan="3">
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="spacing">
            <number>20</number>
@@ -747,6 +747,32 @@ QScrollBar::right-arrow:horizontal {
          </layout>
         </item>
        </layout>
+      </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="1">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item row="2" column="1">
        <spacer name="verticalSpacer_2">
