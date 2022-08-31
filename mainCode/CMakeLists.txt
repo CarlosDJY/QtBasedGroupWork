@@ -90,6 +90,7 @@ set(PROJECT_SOURCES
         addproduct.h
         addproduct.cpp
         addproduct.ui
+
         ${TS_FILES}
 )
 

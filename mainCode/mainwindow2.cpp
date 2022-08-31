@@ -20,6 +20,8 @@ MainWindow2::MainWindow2(QWidget *parent) :
     this->setWindowTitle("网上超市系统");
     QFile User("Users.txt");
     User.open(QIODevice::ReadOnly);
+
+    //在输入详细信息前不能访问其他内容
     while(!User.atEnd())
     {
         QString Arr=(QString)User.readLine();

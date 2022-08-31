@@ -10,13 +10,13 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QRegularExpression>
 
 using namespace std;
 
 /*
  *
  *暂时缺少判断数据是否合理这一功能；
- *需要添加保存和返回时返回到admin分支；
  *未接入余额与偏好模块(已完成）
  *
  */
@@ -31,6 +31,7 @@ QFile Account("Users.txt");
 
 QString Arr;
 QStringList Ac;
+QStringList Mail;
 void ReplaceLine(QString AccountID, QString Info);
 
 int Sex = 0;
@@ -67,14 +68,17 @@ AccountDetail::AccountDetail(QWidget *parent) :
             break;
         }
     }
+
+    //用于判断剩余待编辑项
     DetailReady = 7 - Ac.length();
     NeedEdit = 7 - Ac.length();
 
+    //补全Account信息的长度
     while(Ac.length()<9){
         Ac << "";
     }
 
-    //性别暂未设置
+    //设置初始信息
     ui->IDEdit->setText(Ac[0]);
     ui->PasswordEdit->setText(Ac[1]);
     if(Ac[2]=="1\n"||Ac[2]=="0\n")
@@ -97,12 +101,15 @@ AccountDetail::~AccountDetail()
 
 void AccountDetail::on_ReturnButton_clicked()
 {
+    //未完成编辑时报错
     if(NeedEdit > 0){
         QMessageBox::warning(this, tr("Warning"), tr("Edit not Complete !"), QMessageBox::Ok);
     }
+    //未完成初次编辑时报错
     else if(!DetailReady){
         QMessageBox::warning(this, tr("Warning"), tr("Save Edit First !"), QMessageBox::Ok);
     }
+    //返回
     else{
             if(IsAdmin==1)
             {
@@ -138,25 +145,66 @@ void AccountDetail::on_SaveButton_clicked()
         if(QString::compare(Ac[8],"")==0){
             Ac[8] = "222";
         }
+<<<<<<< HEAD
         int i = 0;
         while(i < Ac.length()-1){
 
             if(QString::compare(Ac[i].at(Ac[i].size() - 1),"\n")==0){
                 Ac[i].chop(1);
+=======
+
+        int ValidMail = 0;
+        Mail = Ac[5].split("@");
+        qDebug() << Mail;
+        if (Mail.length() == 2) {
+            QStringList MailLast = Mail[1].split(".");
+            qDebug() << MailLast;
+            if (MailLast.length()>=2) {
+                ValidMail = 1;
+>>>>>>> 63d4bc2291d65c7f5e1f978e7fc56fc8a31d0fcd
             }
-            i++;
         }
-        QString AcInfo = Ac.join(" ");
-        AcInfo=AcInfo+" "+QString::number(IsAdmin);
-        qDebug() << AcInfo;
+        int ValidPhone = -10;
+        QString Phone = Ac[4];
+        Phone.remove(QRegularExpression("[0-9]"));
+        ValidPhone += Ac[4].length() - Phone.length();;
+        if(ValidMail <= 0){
+            QMessageBox::warning(this, tr("Warning"), tr("Invalid Mail !"), QMessageBox::Ok);
+        }
+        else if(ValidPhone <= 0){
+            qDebug() << ValidPhone;
+            QMessageBox::warning(this, tr("Warning"), tr("Invalid Phone !"), QMessageBox::Ok);
+        }
+        else
+        {
+            int i = 0;
+            while(i < Ac.length()){
+                Ac[i].remove(" ");
+                if(QString::compare(Ac[i].at(Ac[i].size() - 1),"\n")==0){
+                    Ac[i].chop(1);
+                }
+                i++;
+            }
+            //合并全部信息
+            QString AcInfo = Ac.join(" ");
+            AcInfo.remove("/n");
+            if(Ac[Ac.length()-1] != QString("222")){
+                AcInfo.chop(1);
+            }
+            qDebug() << "AcInfo" << AcInfo;
+            AcInfo=AcInfo + " " + QString::number(IsAdmin) + "\n";
+            qDebug() <<  "AcInfo" << AcInfo;
 
-        ReplaceLine(AccountInfomation, AcInfo);
+            //取代原先的信息行
+            ReplaceLine(AccountInfomation, AcInfo);
 
-        QMessageBox::information(this, tr(""),tr("Data Updated !"), QMessageBox::Ok);
+            //完成编辑
+            QMessageBox::information(this, tr(""),tr("Data Updated !"), QMessageBox::Ok);
 
-        AccountControl *win = new AccountControl;
-        win->show();
-        this->hide();
+            AccountControl *win = new AccountControl;
+            win->show();
+            this->hide();
+        }
     }
 }
 
@@ -175,7 +223,7 @@ void ReplaceLine(QString AccountID, QString Info){
 
             P[count] = Info;
             Account.close();
-
+            //改写文件内容
             Account.open(QIODevice::ReadWrite | QIODevice::Truncate);
             QTextStream in(&Account);
             for (int i=0; i<P.size(); i++){
@@ -190,26 +238,29 @@ void ReplaceLine(QString AccountID, QString Info){
 
 }
 
-
+//判断是否被编辑过
 int NameNotEdit = 1;
 void AccountDetail::on_NameEdit_editingFinished()
 {
-    if(ui->NameEdit->text()!="" && NameNotEdit){
+    if(ui->NameEdit->text()!=""){
+        if(NameNotEdit){
+            NameNotEdit = 0;
+            NeedEdit -= 1;
+        }
         Ac[2] = ui->NameEdit->text();
-        NameNotEdit = 0;
-        NeedEdit -= 1;
     }
 }
+
 
 
 void AccountDetail::on_MaleChoose_clicked()
 {
     Sex = 1;
     if(SexNotEdit){
-        Ac[3] = "1";
         SexNotEdit = 0;
         NeedEdit -= 1;
     }
+    Ac[3] = "1";
 }
 
 
@@ -217,10 +268,10 @@ void AccountDetail::on_FemaleChoose_clicked()
 {
     Sex = 2;
     if(SexNotEdit){
-        Ac[3] = "2";
         SexNotEdit = 0;
         NeedEdit -= 1;
     }
+    Ac[3] = "2";
 }
 
 
@@ -228,39 +279,45 @@ void AccountDetail::on_SecretChoose_clicked()
 {
     Sex = 3;
     if(SexNotEdit){
-        Ac[3] = "3";
         SexNotEdit = 0;
         NeedEdit -= 1;
     }
+    Ac[3] = "3";
 }
 
 int PhoneNotEdit = 1;
 void AccountDetail::on_PhoneEdit_editingFinished()
 {
-    if(ui->PhoneEdit->text()!="" && PhoneNotEdit){
+    if(ui->PhoneEdit->text()!=""){
+        if(PhoneNotEdit){
+            PhoneNotEdit = 0;
+            NeedEdit -= 1;
+        }
         Ac[4] = ui->PhoneEdit->text();
-        PhoneNotEdit = 0;
-        NeedEdit -= 1;
     }
 }
 
 int MailNotEdit = 1;
 void AccountDetail::on_MailEdit_editingFinished()
 {
-    if(ui->MailEdit->text()!="" && MailNotEdit){
+    if(ui->MailEdit->text()!=""){
+        if(MailNotEdit){
+            MailNotEdit = 0;
+            NeedEdit -= 1;
+        }
         Ac[5] = ui->MailEdit->text();
-        MailNotEdit = 0;
-        NeedEdit -= 1;
     }
 }
 
 int AddressNotEdit = 1;
 void AccountDetail::on_AddressEdit_editingFinished()
 {
-    if(ui->AddressEdit->text()!="" && AddressNotEdit){
+    if(ui->AddressEdit->text()!=""){
+        if(AddressNotEdit){
+            AddressNotEdit = 0;
+            NeedEdit -= 1;
+        }
         Ac[6] = ui->AddressEdit->text();
-        AddressNotEdit = 0;
-        NeedEdit -= 1;
     }
 }
 

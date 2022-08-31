@@ -16,6 +16,7 @@ AccountControl::AccountControl(QWidget *parent) :
     this->setWindowTitle("网上超市系统");
     QFile User("Users.txt");
     User.open(QIODevice::ReadOnly);
+
     while(!User.atEnd())
     {
         QString Arr=(QString)User.readLine();
