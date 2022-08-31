@@ -11,6 +11,7 @@ struct Shoppingcars
     float SellPrice;//商品单价
     int Num;//商品数量
     QString ID;//商品ID
+    int Storage;
 };
 typedef struct Shoppingcars Shoppingcars;//表示购物车的结构体
 namespace Ui {

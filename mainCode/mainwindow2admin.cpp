@@ -3,7 +3,6 @@
 #include "orderinfoadmin.h"
 #include "productsearchadmin.h"
 #include "ui_mainwindow2admin.h"
-
 MainWindow2Admin::MainWindow2Admin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow2Admin)

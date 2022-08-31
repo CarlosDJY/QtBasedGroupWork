@@ -10,6 +10,7 @@ extern QString AccountInfomation;
 extern int IsAdmin;
 QString ShopName;
 Shoppingcars Exist[100];
+int Storage;
 ProductInfo::ProductInfo(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ProductInfo)
@@ -32,6 +33,7 @@ ProductInfo::ProductInfo(QWidget *parent) :
     ui->SupermarketID->setText(L[3]);
     ShopName=L[3];
     float Discount=L[4].toFloat();
+    Storage=L[5].toInt();
     ui->DiscountPrice->setText(QString::number(Discount,'f',2));
     if(Discount!=1.0)
     {
@@ -72,6 +74,7 @@ int SetToMemory()
             Exist[i].Name=ProductInfo[1];
             Exist[i].Num=ProductInfo[2].toInt();
             Exist[i].SellPrice=ProductInfo[3].toFloat();
+            Exist[i].Storage=ProductInfo[4].toInt();
             i++;
         }
         Q.close();
@@ -88,11 +91,15 @@ void ProductInfo::on_AddToCart_clicked()
    QString FileName=AccountInfomation+" "+"cart"+" "+ui->SupermarketID->text()+".txt";
    std::string s=FileName.toStdString();
    const char* res=s.c_str();
-   int n=SetToMemory();
    QFile q(res);
    q.open(QIODevice::WriteOnly);
    int i=0;
-
+   int n=SetToMemory();
+   if(C.Num>Storage)
+   {
+        QMessageBox::warning(this, tr("Warning"), tr("没这么多库存"), QMessageBox::Ok);
+        return;
+   }
    if(n==0)
    {
        QString tmp=ui->ProductID->text()+" "+ui->ProductName->text()+" "+ui->GoodsNumber->text()+" "+QString::number(ui->Price->text().toFloat(),'f',2)+"\n";

@@ -24,6 +24,7 @@ using namespace std;
 //更改用户信息
 
 extern QString AccountInfomation;
+QString ShopInfo;
 int DetailReady = 0;
 int NeedEdit = 5;
 extern int IsAdmin;
@@ -92,6 +93,7 @@ AccountDetail::AccountDetail(QWidget *parent) :
     ui->PhoneEdit->setText(Ac[4]);
     ui->MailEdit->setText(Ac[5]);
     ui->AddressEdit->setText(Ac[6]);
+    ShopInfo=Ac[6];
 }
 
 AccountDetail::~AccountDetail()
@@ -133,26 +135,18 @@ void AccountDetail::on_SaveButton_clicked()
 
     //尚未完成初次编辑
     if(NeedEdit > 0){
+        qDebug()<<NeedEdit;
         QMessageBox::warning(this, tr("Warning"), tr("Edit not Complete !"), QMessageBox::Ok);
     }
 
     //已完成初次编辑
     else {
-        //写入Ac
         if(QString::compare(Ac[7],"")==0){
             Ac[7] = "44.5";
         }
         if(QString::compare(Ac[8],"")==0){
             Ac[8] = "222";
         }
-<<<<<<< HEAD
-        int i = 0;
-        while(i < Ac.length()-1){
-
-            if(QString::compare(Ac[i].at(Ac[i].size() - 1),"\n")==0){
-                Ac[i].chop(1);
-=======
-
         int ValidMail = 0;
         Mail = Ac[5].split("@");
         qDebug() << Mail;
@@ -161,7 +155,6 @@ void AccountDetail::on_SaveButton_clicked()
             qDebug() << MailLast;
             if (MailLast.length()>=2) {
                 ValidMail = 1;
->>>>>>> 63d4bc2291d65c7f5e1f978e7fc56fc8a31d0fcd
             }
         }
         int ValidPhone = -10;
@@ -178,8 +171,9 @@ void AccountDetail::on_SaveButton_clicked()
         else
         {
             int i = 0;
+            qDebug()<<"Ac" << Ac;
             while(i < Ac.length()){
-                Ac[i].remove(" ");
+                //Ac[i].remove(" ");
                 if(QString::compare(Ac[i].at(Ac[i].size() - 1),"\n")==0){
                     Ac[i].chop(1);
                 }
@@ -187,11 +181,11 @@ void AccountDetail::on_SaveButton_clicked()
             }
             //合并全部信息
             QString AcInfo = Ac.join(" ");
+            qDebug() << AcInfo;
             AcInfo.remove("/n");
-            if(Ac[Ac.length()-1] != QString("222")){
-                AcInfo.chop(1);
+            if(Ac[Ac.length()-1] == QString("1") || Ac[Ac.length()-1] == QString("0")){
+                AcInfo.chop(2);
             }
-            qDebug() << "AcInfo" << AcInfo;
             AcInfo=AcInfo + " " + QString::number(IsAdmin) + "\n";
             qDebug() <<  "AcInfo" << AcInfo;
 
@@ -200,10 +194,19 @@ void AccountDetail::on_SaveButton_clicked()
 
             //完成编辑
             QMessageBox::information(this, tr(""),tr("Data Updated !"), QMessageBox::Ok);
+            if(IsAdmin==1)
+            {
+                AccountControlAdmin* win=new AccountControlAdmin;
+                win->show();
+                this->close();
+            }
+            else
+            {
+                AccountControl* win=new AccountControl;
+                win->show();
+                this->close();
+            }
 
-            AccountControl *win = new AccountControl;
-            win->show();
-            this->hide();
         }
     }
 }

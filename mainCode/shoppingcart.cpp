@@ -12,9 +12,11 @@
 #include <QTextStream>
 #include <QStandardItemModel>
 #include "productinfo.h"
+#include "productsearch.h"
+extern Good ExistGoods[100];
 extern QString AccountInfomation;
+QString SupName;
 double NumToPay;
-
 QString filters;
 QStringList BelongedCartList;
 QStringList BelongedOrderList;
@@ -75,6 +77,18 @@ QStringList FindFile(const QString &strFilePath, const QString &strNameFilters)
 //返回主界面2
 void ShoppingCart::on_BackButton_clicked()
 {
+    QString P=AccountInfomation+" "+"order"+" "+SupName;
+    QFile Q(P);
+    Q.open(QIODevice::ReadWrite|QIODevice::Text);
+    QStringList A=((QString)Q.readAll()).split("\n");
+    QString New="";
+    for (int i = 0; i <= A.length()-4; ++i) {
+        New=A[i]+"\n"+A[i+1];
+    }
+    std::string str=New.toStdString();
+    const char* s=str.c_str();
+    Q.write(s);
+    Q.close();
     MainWindow2 *win = new MainWindow2;
     win->show();
     this->close();
@@ -104,8 +118,8 @@ void ShoppingCart::on_BuyAll_clicked()
     //所以写好这个创建就行了
     QString S=CartInit.fileName();
     QStringList p=S.split(" ");
-    QString ShopName=p[2];
-    QString P=AccountInfomation+" "+"order"+" "+ShopName;
+    SupName=p[2];
+    QString P=AccountInfomation+" "+"order"+" "+SupName;
     QFile Q(P);
     Q.open(QIODevice::ReadWrite|QIODevice::Text);
     Q.close();
@@ -133,6 +147,48 @@ void ShoppingCart::on_BuyAll_clicked()
     QTextStream on(&F);
     on << "\n" << AccountInfomation << " " << current_date << " " << NumToPay << Qt::endl;
     on << CartGoods <<Qt::endl;
+    int i=0;
+    QStringList temp=CartGoods.split(" ");
+    int n=WriteToMemory();
+    for (int i = 0; i < n; ++i)
+    {
+        if(QString::compare(temp[1],ExistGoods[i].Name)==0)
+        {
+            ExistGoods[i].Storage-=temp[2].toInt();
+            ExistGoods[i].Sale+=temp[2].toInt();
+        }
+    }
+    for (int i = 0; i < n; ++i)
+    {
+        if(ExistGoods[i].Discount<1.0&&ExistGoods[i].Discount>0)
+        {
+            QFile F("Goods.txt");
+            F.open(QIODevice::WriteOnly);
+            QString Arr=ExistGoods[i].Name+" "+QString::number(ExistGoods[i].SellPrice,'f',2)+" "+ExistGoods[i].Name+" "+QString::number(ExistGoods[i].Discount,'f',2)+" "
+                    +ExistGoods[i].Shop+" "+ExistGoods[i].ID+" "+QString::number(ExistGoods[i].Storage)+" "+QString::number(ExistGoods[i].EndTime.tm_year)
+                    +" "+QString::number(ExistGoods[i].EndTime.tm_mon)+" "+QString::number(ExistGoods[i].EndTime.tm_mday)
+                    +" "+QString::number(ExistGoods[i].EndTime.tm_hour)+" "+QString::number(ExistGoods[i].EndTime.tm_min)
+                    +" "+QString::number(ExistGoods[i].StartTime.tm_year)+" "+QString::number(ExistGoods[i].StartTime.tm_mon)
+                    +" "+QString::number(ExistGoods[i].StartTime.tm_mday)+" "+QString::number(ExistGoods[i].StartTime.tm_hour)
+                    +" "+QString::number(ExistGoods[i].StartTime.tm_min)+" "+QString::number(ExistGoods[i].Sale)+"\n";
+            std::string tmp=Arr.toStdString();
+            const char* sr=tmp.c_str();
+            F.write(sr);
+            F.close();
+        }
+        else
+        {
+
+            QString Arr=ExistGoods[i].Name+" "+QString::number(ExistGoods[i].SellPrice,'f',2)+" "+ExistGoods[i].Name+" "+QString::number(ExistGoods[i].Discount,'f',2)+" "
+                    +ExistGoods[i].Shop+" "+ExistGoods[i].ID+" "+QString::number(ExistGoods[i].Storage)+" "+QString::number(ExistGoods[i].Sale)+"\n";
+            std::string tmp=Arr.toStdString();
+            const char* sr=tmp.c_str();
+            QFile A("Goods.txt");
+            A.open(QIODevice::Append);
+            A.write(sr);
+            A.close();
+        }
+    }
     PayPage *win = new PayPage;
     win->show();
     this->close();
@@ -183,6 +239,7 @@ void ShoppingCart::on_NextPage_clicked()
 
 void ShoppingCart::on_FindCart_clicked()
 {
+    //需要加一个当没有cart文件时的反馈
     filters = AccountInfomation + " cart" + "*.txt";
     BelongedCartList = FindFile("D:\\DataFiles\\C++\\GW_testClone\\QtBasedGroupWork", filters);
     currCart = 0;
@@ -190,6 +247,11 @@ void ShoppingCart::on_FindCart_clicked()
     qDebug() << BelongedCartList;
     qDebug() << countCart;
     QFile CartInit(BelongedCartList[currCart]);
+    if(CartInit.exists()==false)
+    {
+        QMessageBox::warning(this, tr("Warning"), tr("找不到订单文件"), QMessageBox::Ok);
+        return;
+    }
     CartInit.open(QIODevice::ReadOnly);
     QString CartGoods = CartInit.readAll();
     QStringList DivCartGoods = CartGoods.split("\n");

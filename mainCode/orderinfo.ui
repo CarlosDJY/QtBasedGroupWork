@@ -595,32 +595,6 @@ QScrollBar::right-arrow:horizontal {
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="minimumSize">
-           <size>
-            <width>90</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>取消</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="PayButton">
-          <property name="minimumSize">
-           <size>
-            <width>90</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>付款</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="BackButton">
           <property name="minimumSize">
            <size>
@@ -657,7 +631,7 @@ QScrollBar::right-arrow:horizontal {
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>14</height>
     </rect>
    </property>
   </widget>

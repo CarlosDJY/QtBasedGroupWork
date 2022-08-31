@@ -534,7 +534,7 @@ QScrollBar::right-arrow:horizontal {
             <item>
              <widget class="QLabel" name="label_10">
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;销售价格&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;进货价格&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
@@ -797,7 +797,7 @@ QScrollBar::right-arrow:horizontal {
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>14</height>
     </rect>
    </property>
   </widget>

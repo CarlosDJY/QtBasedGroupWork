@@ -33,7 +33,114 @@ void ProductSearchAdmin::on_BackButton_clicked()
     this->close();
 }
 
+void SortingByProfit(int n)//按利润从高到低排序已筛选商品，n为符合筛选规则商品的数目
+{
+    int i;
+    int j;
+    int a=0;
+    Good temp;
+    for ( i = 0; i < n-1; i++)
+    {
+        for ( j = 0; j < n-1-i; j++)
+        {
+            if (ExistGoods[j].SellPrice-ExistGoods[j].BuyPrice<ExistGoods[j+1].SellPrice-ExistGoods[j+1].BuyPrice)
+            {
+                temp=ExistGoods[j];
+                ExistGoods[j]=ExistGoods[j+1];
+                ExistGoods[j+1]=temp;
+            }
+        }
+    }
+}
+float SearchForTurnover(Good G)//查询某商品的营业额
+{
+    return G.Sale*G.SellPrice;
+}
+void SortingByTheTurnover(int n)//按营业额从高到低排序已筛选商品，n为符合筛选规则商品的数目
+{
+    int i;
+    int j;
+    int a=0;
+    Good temp;
+    for ( i = 0; i < n-1; i++)
+    {
+        for ( j = 0; j < n-1-i; j++)
+        {
+            if (SearchForTurnover(ExistGoods[j])<SearchForTurnover(ExistGoods[j+1]))
+            {
+                temp=ExistGoods[j];
+                ExistGoods[j]=ExistGoods[j+1];
+                ExistGoods[j+1]=temp;
+            }
+        }
+    }
+}
+bool IsLack(Good G)//判断某款商品是否缺货
+{
+    if(G.Storage==0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool IsUnsalable(Good G)//判断是否滞销
+{
+    if(G.Storage>500)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+int SearchForLack(int n)//筛选出缺货商品，n为符合前序筛选规则的商品数目，返回符合前序与新增筛选规则商品的数目
+{
+    int i=0;
+    int a=0;
+    while (i<n)
+    {
+        if (IsLack(ExistGoods[i])==true)
+        {
+            Tmp[a]=ExistGoods[i];
+            i++;
+            a++;
+        }
+        else{
+            i++;
+        }
+    }
+    for ( i = 0; i <=a; i++)
+    {
+        ExistGoods[i]=Tmp[i];
+    }
 
+    return a;
+}
+int SearchForUnsalable(int n){//筛选出滞销商品，n为符合前序筛选规则的商品数目，返回符合前序与新增筛选规则商品的数目
+    int i=0;
+    int a=0;
+    while (i<n)
+    {
+        if (IsUnsalable(ExistGoods[i])==true)
+        {
+            Tmp[a]=ExistGoods[i];
+            i++;
+            a++;
+        }
+        else{
+            i++;
+        }
+    }
+    for ( i = 0; i <=a; i++)
+    {
+        ExistGoods[i]=Tmp[i];
+    }
+    return a;
+}
 void ProductSearchAdmin::on_pushButton_3_clicked()
 {
     /*读取用户输入*/
@@ -82,13 +189,24 @@ void ProductSearchAdmin::on_pushButton_3_clicked()
         }
         switch(ui->comboBox_2->currentIndex())//依照用户的输入选择一种排序方式
         {
-            case 1:
+            case 0:
                 SortingByTheSaledAmount(PassedNumber);
                 break;
-            case 2:
+            case 1:
                 SortingBySellPrice(PassedNumber);
                 qDebug()<<ExistGoods[0].Name;
                 break;
+        case 2:
+            SortingByProfit(PassedNumber);
+            break;
+        case 3:
+            SortingByTheTurnover(PassedNumber);
+            break;
+        case 4:
+            SearchForUnsalable(PassedNumber);
+            break;
+        case 5:
+            SearchForLack(PassedNumber);
             default:
                 break;
         }
@@ -112,12 +230,23 @@ void ProductSearchAdmin::on_pushButton_3_clicked()
         }
         switch (ui->comboBox_2->currentIndex())//依照用户的输入选择一种排序方式
         {
-        case 1:
+        case 0:
             SortingByTheSaledAmount(PassedNumber);
             break;
-        case 2:
+        case 1:
             SortingBySellPrice(PassedNumber);
             break;
+        case 2:
+            SortingByProfit(PassedNumber);
+            break;
+        case 3:
+            SortingByTheTurnover(PassedNumber);
+            break;
+        case 4:
+            PassedNumber=SearchForUnsalable(PassedNumber);
+            break;
+        case 5:
+            PassedNumber=SearchForLack(PassedNumber);
         default:
             break;
         }

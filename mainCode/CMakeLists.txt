@@ -91,6 +91,9 @@ set(PROJECT_SOURCES
         addproduct.cpp
         addproduct.ui
 
+        mainwindow2admin.cpp
+        mainwindow2admin.h
+        mainwindow2admin.ui
         ${TS_FILES}
 )
 

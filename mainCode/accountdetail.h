@@ -6,6 +6,7 @@
 #include <QMessageBox>
 
 extern int NeedEdit;
+extern QString ShopInfo;
 bool isDetailReady();
 
 namespace Ui {

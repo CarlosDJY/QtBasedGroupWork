@@ -5,7 +5,7 @@
 #include <QProcess>
 #include <QMessageBox>
 #include <QButtonGroup>
-
+extern QString ShopName;
 namespace Ui {
 class ShoppingCart;
 }

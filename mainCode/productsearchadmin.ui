@@ -572,17 +572,32 @@ QScrollBar::right-arrow:horizontal {
             </property>
             <item>
              <property name="text">
-              <string>综合排序</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
               <string>销量 从高到低</string>
              </property>
             </item>
             <item>
              <property name="text">
               <string>价格 从低到高</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>利润 从高到低</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>营业额 从高到低</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>获取滞销商品</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>获取缺货商品</string>
              </property>
             </item>
            </widget>
@@ -717,7 +732,7 @@ QScrollBar::right-arrow:horizontal {
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>14</height>
     </rect>
    </property>
   </widget>

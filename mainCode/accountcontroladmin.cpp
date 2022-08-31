@@ -50,9 +50,7 @@ void AccountControlAdmin::on_AccountButton_clicked()
 
 void AccountControlAdmin::on_LogOutButton_clicked()
 {
-    MainWindow *win = new MainWindow;
-    win->show();
-    this->close();
+   qApp->quit();
 }
 
 

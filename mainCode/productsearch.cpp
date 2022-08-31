@@ -367,7 +367,7 @@ void ProductSearch::on_ComfirmingButtom_clicked()
         {
             time_t ST=mktime(&ExistGoods[flag].StartTime);
             time_t ET=mktime(&ExistGoods[flag].EndTime);
-            QString Tmp=ExistGoods[flag].ID+" "+ExistGoods[flag].Name+" "+QString::number(ExistGoods[flag].SellPrice,'f',2)+" "+ExistGoods[flag].Shop+" "+QString::number(ExistGoods[flag].Discount,'f',2)+" "+QString::number(ST,10)+" "+QString::number(ET,10)+" "+QString::number(ExistGoods[flag].Sale);
+            QString Tmp=ExistGoods[flag].ID+" "+ExistGoods[flag].Name+" "+QString::number(ExistGoods[flag].SellPrice,'f',2)+" "+ExistGoods[flag].Shop+" "+QString::number(ExistGoods[flag].Discount,'f',2)+" "+QString::number(ST,10)+" "+QString::number(ET,10)+" "+QString::number(ExistGoods[flag].Sale)+" "+QString::number(ExistGoods[flag].Storage);
             std::string TEST=Tmp.toStdString();
             const char* data=TEST.c_str();
             Q.write(data);

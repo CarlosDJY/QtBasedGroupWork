@@ -14,7 +14,7 @@
 int VerificationCode = 0;
 double balancePay;
 extern double NumToPay;
-
+extern QString SupName;
 double price;
 
 extern QString AccountInfomation;
@@ -62,6 +62,7 @@ PayPage::~PayPage()
 //取消支付，跳转到订单界面
 void PayPage::on_Cancel_clicked()
 {
+
     OrderInfo *win = new OrderInfo;
     win->show();
     this->hide();
@@ -113,35 +114,6 @@ void PayPage::on_Confirm_clicked()
             qDebug() << AcInfoPay;
             ReplaceLinePay(AccountInfomation, AcInfoPay);
             QMessageBox::information(this,tr("Payment"),tr("Payment Complete !"), QMessageBox::Ok);
-            /*QFile CurrentOrder(BelongedOrderList[0]);
-            CurrentOrder.open(QIODevice::ReadOnly);
-            QString Line;
-            QStringList temp;
-            int search=0;
-            Line=(QString)CurrentOrder.readAll();
-            temp=Line.split("\n");
-            while(true)
-            {
-                QString a=QString::number(price,'f',2);
-                QStringList Seperate=temp[search].split(" ");
-                if(QString::compare(Seperate[0],AccountInfomation)==0&&QString::compare(Seperate[3],a)==0)
-                {
-                        temp[search+1]=temp[search+1]+" "+"1";
-                        CurrentOrder.close();
-                        CurrentOrder.open(QIODevice::ReadWrite | QIODevice::Truncate);
-                        QTextStream in(&AccountPay);
-                        for (int i=0; i<Line.size(); i++)
-                        {
-                            in << Line[i] << "\n";
-                        }
-                        CurrentOrder.close();
-                        break;
-                }
-                else
-                {
-                    search++;
-                }
-            }*/
             OrderInfo *win = new OrderInfo;
             win->show();
             this->hide();

@@ -46,11 +46,8 @@ AccountControl::~AccountControl()
 //退出登录，回到主界面1
 void AccountControl::on_LogOutButton_clicked()
 {
-    MainWindow *win = new MainWindow;
-    win->show();
-    this->close();
+    qApp->quit();
 }
-
 //更改用户信息
 void AccountControl::on_AccountButton_clicked()
 {
