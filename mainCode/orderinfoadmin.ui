@@ -481,34 +481,9 @@ QScrollBar::right-arrow:horizontal {
          <number>15</number>
         </property>
         <item row="0" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;店名&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_4"/>
         </item>
         <item row="1" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;总营业额：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;0.00&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="2" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <property name="spacing">
            <number>30</number>
@@ -668,7 +643,7 @@ QScrollBar::right-arrow:horizontal {
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>14</height>
     </rect>
    </property>
   </widget>

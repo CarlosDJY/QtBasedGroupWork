@@ -26,14 +26,14 @@ ProductInfo::ProductInfo(QWidget *parent) :
     QString Tmp=(QString)Q.readLine();
     QStringList L=Tmp.split(' ');
     int length=L.length();
-    ui->Sale->setText(L[length-1]);
+    ui->Sale->setText(L[length-2]);
     ui->ProductID->setText(L[0]);
     ui->ProductName->setText(L[1]);
     ui->Price->setText(L[2]);
     ui->SupermarketID->setText(L[3]);
     ShopName=L[3];
     float Discount=L[4].toFloat();
-    Storage=L[5].toInt();
+    Storage=L[length-1].toInt();
     ui->DiscountPrice->setText(QString::number(Discount,'f',2));
     if(Discount!=1.0)
     {
@@ -92,7 +92,7 @@ void ProductInfo::on_AddToCart_clicked()
    std::string s=FileName.toStdString();
    const char* res=s.c_str();
    QFile q(res);
-   q.open(QIODevice::WriteOnly);
+   q.open(QIODevice::Append);
    int i=0;
    int n=SetToMemory();
    if(C.Num>Storage)

@@ -357,7 +357,7 @@ void ProductSearch::on_ComfirmingButtom_clicked()
         Q.open(QIODevice::WriteOnly);
         if(ExistGoods[flag].Discount==1.0)
         {
-            QString Tmp=ExistGoods[flag].ID+" "+ExistGoods[flag].Name+" "+QString::number(ExistGoods[flag].SellPrice,'f',2)+" "+ExistGoods[flag].Shop+" "+QString::number(ExistGoods[flag].Discount,'f',2)+" "+QString::number(ExistGoods[flag].Sale);
+            QString Tmp=ExistGoods[flag].ID+" "+ExistGoods[flag].Name+" "+QString::number(ExistGoods[flag].SellPrice,'f',2)+" "+ExistGoods[flag].Shop+" "+QString::number(ExistGoods[flag].Discount,'f',2)+" "+QString::number(ExistGoods[flag].Sale)+" "+QString::number(ExistGoods[flag].Storage);
             std::string TEST=Tmp.toStdString();
             const char* data=TEST.c_str();
             Q.write(data);

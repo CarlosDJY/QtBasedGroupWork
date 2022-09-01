@@ -1,6 +1,6 @@
 #include "accountdetail.h"
 #include "orderinfoadmin.h"
-#include "mainwindow2admin.h"
+#include "mainwindow2.h"
 #include "ui_orderinfoadmin.h"
 #include <QDebug>
 #include <QFile>
@@ -38,7 +38,7 @@ OrderInfoAdmin::OrderInfoAdmin(QWidget *parent) :
         }
     }
     ui->setupUi(this);
-    ui->label_2->setText(ShopInfo);
+    ui->label_4->setText(ShopInfo);
 }
 
 OrderInfoAdmin::~OrderInfoAdmin()
@@ -78,7 +78,7 @@ QStringList FindFileOA(const QString &strFilePath, const QString &strNameFilters
 
 void OrderInfoAdmin::on_BackButton_clicked()
 {
-    MainWindow2Admin *win = new MainWindow2Admin;
+    MainWindow2 *win = new MainWindow2;
     win->show();
     this->close();
 }

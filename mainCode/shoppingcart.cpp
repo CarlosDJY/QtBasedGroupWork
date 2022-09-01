@@ -148,16 +148,31 @@ void ShoppingCart::on_BuyAll_clicked()
     on << "\n" << AccountInfomation << " " << current_date << " " << NumToPay << Qt::endl;
     on << CartGoods <<Qt::endl;
     int i=0;
-    QStringList temp=CartGoods.split(" ");
+    QStringList temp=CartGoods.split("\n");
+    temp.removeLast();
+    QStringList m;
+    QStringList b;
+    QStringList c;
+    qDebug() << temp;
     int n=WriteToMemory();
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i<temp.length(); ++i) {
+        QString l=temp[i];
+        m=l.split(" ");
+        c << m[2];
+        b << m[1];
+    }
+    for (int i = 0; i < temp.length(); ++i)
     {
-        if(QString::compare(temp[1],ExistGoods[i].Name)==0)
+        for (int j = 0; j < n; ++j)
         {
-            ExistGoods[i].Storage-=temp[2].toInt();
-            ExistGoods[i].Sale+=temp[2].toInt();
+            if(QString::compare(b[i],ExistGoods[j].Name)==0)
+            {
+                ExistGoods[j].Storage-=c[i].toInt();
+                ExistGoods[j].Sale+=c[i].toInt();
+            }
         }
     }
+    qDebug() << n;
     for (int i = 0; i < n; ++i)
     {
         if(ExistGoods[i].Discount<1.0&&ExistGoods[i].Discount>0)

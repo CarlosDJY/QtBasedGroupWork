@@ -16,9 +16,6 @@ ProductSearchAdmin::ProductSearchAdmin(QWidget *parent) :
     ui(new Ui::ProductSearchAdmin)
 {
     ui->setupUi(this);
-    QModelIndex index = ui->comboBox_2->model()->index(3, 0);//应设置综合排序不可选
-    QVariant v(0);
-    ui->comboBox_2->model()->setData(index, v, Qt::UserRole - 1);
     ui->SuperMarketName->setEnabled(false);
 }
 ProductSearchAdmin::~ProductSearchAdmin()
